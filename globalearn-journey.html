@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlobaLearn Journey 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --g:#1a8c5c;--gd:#0f5c3a;--gl:#e8f7f1;--gm:#b8e8d0;--gt:#17b08a;
+  --white:#fff;--bg:#f5f7fa;--border:#e4e8ed;
+  --txt:#111827;--txt2:#4b5563;--txt3:#9ca3af;
+  --amber:#f59e0b;--ambl:#fef3c7;
+  --blue:#3b82f6;--bluel:#eff6ff;
+  --rose:#f43f5e;
+}
+html,body{height:100%;overflow:hidden}
+@media(max-width:768px){html,body{overflow:auto}}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--txt);display:flex;flex-direction:column}
+
+/* ── TOPBAR ── */
+.topbar{height:52px;background:var(--gd);display:flex;align-items:center;justify-content:space-between;padding:0 14px;flex-shrink:0;z-index:200}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{min-width:34px;height:34px;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;cursor:pointer;transition:.2s;position:relative}
+.brand-mark:hover{background:rgba(255,255,255,.25)}
+.brand-mark img{height:34px;width:auto;max-width:120px;object-fit:contain;border-radius:7px;display:none}
+.upload-hint{position:absolute;inset:0;background:rgba(0,0,0,.45);border-radius:7px;display:none;align-items:center;justify-content:center;font-size:.52rem;color:#fff;text-align:center;line-height:1.3}
+.brand-mark:hover .upload-hint{display:flex}
+#logoInput{display:none}
+.brand-text{display:flex;flex-direction:column}
+.brand-name{font-family:'Sora',sans-serif;font-size:.88rem;font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.02em;outline:none;min-width:10px}
+.brand-name:focus{background:rgba(255,255,255,.1);border-radius:3px;padding:0 3px}
+.brand-sub{font-size:.57rem;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.02em;outline:none}
+.brand-sub:focus{background:rgba(255,255,255,.1);border-radius:3px;padding:0 3px}
+.topbar-chips{display:flex;align-items:center;gap:5px}
+.chip{font-size:.63rem;font-weight:600;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.16);outline:none}
+.chip:focus{background:rgba(255,255,255,.2)}
+.topbar-right{display:flex;align-items:center;gap:7px}
+.edit-btn{font-size:.66rem;font-weight:700;padding:5px 11px;border-radius:7px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.18);cursor:pointer;transition:.2s;display:none}
+.edit-btn:hover{background:rgba(255,255,255,.2)}
+.edit-btn.on{background:var(--amber);color:#000;border-color:var(--amber)}
+.admin-badge{font-size:.6rem;font-weight:700;padding:3px 8px;border-radius:6px;background:rgba(245,158,11,.25);color:#fde68a;border:1px solid rgba(245,158,11,.3);display:none;align-items:center;gap:4px}
+.admin-badge.show{display:flex}
+.logout-btn{font-size:.6rem;font-weight:700;padding:3px 8px;border-radius:6px;background:rgba(244,63,94,.2);color:#fda4af;border:1px solid rgba(244,63,94,.3);cursor:pointer;display:none;transition:.2s}
+.logout-btn.show{display:flex;align-items:center;gap:4px}
+.logout-btn:hover{background:rgba(244,63,94,.35)}
+.reg-btn{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;font-weight:800;padding:6px 13px;border-radius:7px;border:none;cursor:pointer;background:#fff;color:var(--g);transition:.2s}
+.reg-btn:hover{background:var(--gl);transform:translateY(-1px)}
+
+/* ── LOGIN MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex;animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-box{background:#fff;border-radius:20px;width:340px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:slideUp .22s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.modal-head{background:linear-gradient(135deg,var(--gd),var(--g));padding:22px 24px 18px;position:relative}
+.modal-head-ico{width:42px;height:42px;background:rgba(255,255,255,.18);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:10px}
+.modal-head h2{font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:3px}
+.modal-head p{font-size:.72rem;color:rgba(255,255,255,.65)}
+.modal-close{position:absolute;top:12px;right:14px;width:28px;height:28px;background:rgba(255,255,255,.15);border:none;border-radius:7px;color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.modal-close:hover{background:rgba(255,255,255,.3)}
+.modal-body{padding:22px 24px}
+.field-label{font-size:.69rem;font-weight:700;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:5px}
+.field-input{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:9px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;color:var(--txt);background:var(--bg);outline:none;transition:.2s;margin-bottom:13px}
+.field-input:focus{border-color:var(--g);background:#fff;box-shadow:0 0 0 3px rgba(26,140,92,.1)}
+.field-input.err{border-color:var(--rose);box-shadow:0 0 0 3px rgba(244,63,94,.1)}
+.login-err{font-size:.72rem;color:var(--rose);background:#fff0f3;border:1px solid #fecdd3;border-radius:7px;padding:7px 10px;margin-bottom:12px;display:none}
+.login-err.show{display:block}
+.login-submit{width:100%;padding:10px;background:var(--g);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:800;border:none;border-radius:9px;cursor:pointer;transition:.2s}
+.login-submit:hover{background:var(--gd);transform:translateY(-1px);box-shadow:0 4px 14px rgba(26,140,92,.28)}
+.modal-foot{padding:12px 24px 18px;text-align:center;font-size:.68rem;color:var(--txt3);border-top:1px solid var(--border)}
+.modal-foot strong{color:var(--txt2)}
+
+/* admin panel overlay inside topbar */
+.admin-bar{background:rgba(245,158,11,.12);border-bottom:1.5px solid rgba(245,158,11,.25);padding:5px 14px;display:none;align-items:center;gap:9px;flex-shrink:0}
+.admin-bar.show{display:flex}
+.ab-badge{font-size:.6rem;font-weight:800;background:#f59e0b;color:#000;padding:2px 8px;border-radius:5px;text-transform:uppercase;letter-spacing:.06em}
+.ab-msg{font-size:.7rem;color:#92400e;flex:1}
+.ab-actions{display:flex;gap:6px}
+.ab-btn{font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:6px;cursor:pointer;border:1.5px solid;transition:.2s}
+.ab-btn.primary{background:var(--g);color:#fff;border-color:var(--g)}
+.ab-btn.primary:hover{background:var(--gd)}
+.ab-btn.amber{background:var(--amber);color:#000;border-color:var(--amber)}
+.ab-btn.amber.on{background:#fff;color:#b45309;border-color:var(--amber)}
+.ab-btn.danger{background:transparent;color:var(--rose);border-color:var(--rose)}
+.ab-btn.danger:hover{background:#fff0f3}
+
+/* admin trigger (invisible tap zone at bottom-right of topbar) */
+.admin-trigger{position:fixed;bottom:0;right:0;width:28px;height:28px;cursor:pointer;z-index:50;opacity:0}
+
+/* ── LAYOUT ── */
+.layout{flex:1;display:flex;overflow:hidden}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  width:50px;
+  background:linear-gradient(180deg,#0f5c3a 0%,#135040 40%,#1a8c5c 100%);
+  display:flex;flex-direction:column;flex-shrink:0;
+  overflow:hidden;padding:7px 5px;gap:2px;
+  transition:width .25s cubic-bezier(.4,0,.2,1);
+  z-index:10;
+}
+.sidebar.open{width:196px}
+.sb-toggle{width:40px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(255,255,255,.08);color:#fff;font-size:1.05rem;border:none;flex-shrink:0;margin-bottom:5px;transition:.18s}
+.sb-toggle:hover{background:rgba(255,255,255,.18)}
+.sg-lbl{font-size:.54rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.38);padding:8px 0 3px 6px;white-space:nowrap;overflow:hidden;opacity:0;transition:opacity .1s}
+.sidebar.open .sg-lbl{opacity:1;transition:opacity .2s .08s}
+.nav-item{display:flex;align-items:center;height:37px;border-radius:9px;cursor:pointer;transition:all .18s;border:1px solid transparent;position:relative;overflow:hidden;flex-shrink:0}
+.nav-item:hover{background:rgba(255,255,255,.1)}
+.nav-item.active{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.14)}
+.nav-item.active::before{content:'';position:absolute;left:0;top:25%;bottom:25%;width:3px;background:#fff;border-radius:0 3px 3px 0}
+.nav-ico{width:40px;height:37px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.92rem}
+.nav-lbl{font-size:.76rem;font-weight:600;color:rgba(255,255,255,.72);white-space:nowrap;opacity:0;transition:opacity .1s}
+.sidebar.open .nav-lbl{opacity:1;transition:opacity .2s .08s}
+.nav-item:hover .nav-lbl,.nav-item.active .nav-lbl{color:#fff}
+/* tooltip saat collapsed */
+.sidebar:not(.open) .nav-item:hover::after{
+  content:attr(data-label);position:absolute;left:48px;top:50%;transform:translateY(-50%);
+  background:#0f5c3a;color:#fff;font-size:.7rem;font-weight:700;
+  padding:5px 10px;border-radius:7px;white-space:nowrap;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);z-index:999;
+}
+
+/* ── CONTENT ── */
+.content{flex:1;overflow-y:auto;background:var(--white)}
+.content::-webkit-scrollbar{width:4px}
+.content::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+@media(max-width:768px){.content{overflow-y:visible}}
+
+/* PANEL SYSTEM — only .active is shown */
+/* panel system moved below */
+
+/* ── EDIT MODE ── */
+body.edit-mode [contenteditable]{outline:2px dashed rgba(26,140,92,.35);outline-offset:2px;border-radius:3px;cursor:text}
+body.edit-mode [contenteditable]:focus{outline:2px solid var(--g);background:rgba(26,140,92,.04)}
+body.edit-mode [contenteditable]:hover:not(:focus){outline:2px dashed rgba(26,140,92,.55)}
+
+/* ════ BERANDA ════ */
+.hero{
+  background:linear-gradient(150deg,#0b3d27 0%,#1a8c5c 55%,#17b08a 100%);
+  padding:44px 36px 64px;position:relative;overflow:hidden;
+}
+/* Smooth SVG-wave fade at bottom of hero into white */
+.hero::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:56px;
+  background:#fff;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 56' preserveAspectRatio='none'%3E%3Cpath d='M0,28 C300,56 900,0 1200,28 L1200,56 L0,56Z' fill='black'/%3E%3C/svg%3E") no-repeat bottom/100% 100%;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 56' preserveAspectRatio='none'%3E%3Cpath d='M0,28 C300,56 900,0 1200,28 L1200,56 L0,56Z' fill='black'/%3E%3C/svg%3E") no-repeat bottom/100% 100%;
+  pointer-events:none;z-index:3;
+}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 82% 18%,rgba(255,255,255,.07) 0%,transparent 45%)}
+.hd{position:absolute;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none}
+.hd.a{width:155px;height:155px;top:-50px;right:50px}
+.hd.b{width:80px;height:80px;bottom:8px;right:190px}
+.hflex{display:flex;align-items:center;gap:30px;position:relative;z-index:1}
+.hl{flex:1}
+.h-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:4px 13px;font-size:.68rem;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;outline:none}
+.h-pill:focus{background:rgba(255,255,255,.22)}
+.h-title{font-family:'Sora',sans-serif;font-size:clamp(2rem,3.2vw,3.2rem);font-weight:800;color:#fff;line-height:1.06;letter-spacing:-.03em;margin-bottom:10px;outline:none}
+.h-title .gr{display:inline;background:linear-gradient(90deg,#a8f5d8,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.h-sub{font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.75;max-width:400px;margin-bottom:22px;outline:none}
+.h-stats{display:flex;gap:0;margin-bottom:22px}
+.hst{padding:0 18px 0 0}
+.hst:not(:first-child){padding-left:18px;border-left:1px solid rgba(255,255,255,.17)}
+.hst-n{font-family:'Sora',sans-serif;font-size:1.9rem;font-weight:800;color:#fff;display:block;line-height:1;outline:none}
+.hst-l{font-size:.6rem;font-weight:600;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.07em;margin-top:3px;display:block;outline:none}
+.h-btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn-w{background:#fff;color:var(--g);font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;font-weight:800;padding:9px 16px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:5px;box-shadow:0 2px 10px rgba(0,0,0,.14)}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.btn-o{background:transparent;border:1.5px solid rgba(255,255,255,.38);color:rgba(255,255,255,.9);font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;font-weight:700;padding:9px 16px;border-radius:8px;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:5px}
+.btn-o:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.65)}
+
+/* info card in hero */
+.hcard{flex:0 0 238px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.17);border-radius:14px;overflow:hidden;backdrop-filter:blur(12px)}
+.hcard-top{padding:11px 14px 8px;border-bottom:1px solid rgba(255,255,255,.1)}
+.hcard-badge{font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.48);display:block;margin-bottom:3px}
+.hcard-h{font-family:'Sora',sans-serif;font-size:.88rem;font-weight:700;color:#fff;outline:none}
+.hcard-rows{padding:9px 14px 5px;display:flex;flex-direction:column;gap:7px}
+.hcard-row{display:flex;align-items:center;gap:8px}
+.hcard-ico{width:24px;height:24px;background:rgba(255,255,255,.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0}
+.hcard-lbl{font-size:.54rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.4);display:block}
+.hcard-val{font-size:.74rem;font-weight:700;color:#fff;outline:none}
+.hcard-cta{margin:8px 14px 12px;background:#fff;color:var(--g);text-align:center;padding:8px;border-radius:8px;font-weight:800;font-size:.69rem;text-decoration:none;display:block;transition:.2s;outline:none}
+.hcard-cta:hover{background:var(--gl)}
+
+/* ── MENU CARDS (home only) — professional animated ── */
+.menu-section{padding:18px 18px 0}
+.menu-title{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--txt3);margin-bottom:11px;display:flex;align-items:center;gap:7px}
+.menu-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+
+.mcard{
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:16px 14px 14px;
+  cursor:pointer;
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease, border-color .18s;
+  position:relative;overflow:hidden;
+  /* Subtle breathing animation to draw attention */
+  animation:mcard-breathe 3s ease-in-out infinite;
+}
+.mcard:nth-child(2){animation-delay:.4s}
+.mcard:nth-child(3){animation-delay:.8s}
+.mcard:nth-child(4){animation-delay:1.2s}
+.mcard:nth-child(5){animation-delay:1.6s}
+.mcard:nth-child(6){animation-delay:2s}
+.mcard:nth-child(7){animation-delay:2.4s}
+.mcard:nth-child(8){animation-delay:2.8s}
+.mcard:nth-child(9){animation-delay:3.2s}
+.mcard:nth-child(10){animation-delay:3.6s}
+
+@keyframes mcard-breathe{
+  0%,100%{box-shadow:0 2px 8px rgba(26,140,92,.06)}
+  50%{box-shadow:0 4px 20px rgba(26,140,92,.15);border-color:var(--gm)}
+}
+
+/* Shimmer sweep on hover */
+.mcard::before{
+  content:'';position:absolute;
+  top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.5) 60%,transparent 80%);
+  transition:left .4s ease;pointer-events:none;
+}
+.mcard:hover::before{left:150%}
+
+.mcard:hover{
+  border-color:var(--g);
+  background:linear-gradient(145deg,#fff 0%,#f0faf5 100%);
+  transform:translateY(-5px) scale(1.02);
+  box-shadow:0 12px 32px rgba(26,140,92,.18);
+  animation:none;
+}
+
+/* Icon badge */
+.mcard-ico{
+  width:38px;height:38px;
+  background:linear-gradient(135deg,var(--gl),var(--gm));
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;
+  margin-bottom:10px;
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1);
+  flex-shrink:0;
+}
+.mcard:hover .mcard-ico{transform:scale(1.15) rotate(-4deg);background:linear-gradient(135deg,var(--gm),var(--gt))}
+
+.mcard-ttl{font-size:.82rem;font-weight:800;color:var(--txt);margin-bottom:3px;padding-right:14px;line-height:1.3}
+.mcard-sub{font-size:.66rem;color:var(--txt3);line-height:1.4}
+.mcard-tag{display:inline-block;font-size:.55rem;font-weight:700;padding:2px 7px;border-radius:20px;margin-top:6px}
+.tag-g{background:var(--gl);color:var(--g)}
+.tag-a{background:var(--ambl);color:#92400e}
+.tag-b{background:var(--bluel);color:#1e40af}
+.tag-r{background:#fff0f3;color:#be123c}
+
+/* Arrow indicator */
+.mcard::after{
+  content:'→';position:absolute;bottom:12px;right:12px;
+  font-size:.72rem;font-weight:800;color:var(--gm);
+  transition:transform .2s ease, color .2s;
+}
+.mcard:hover::after{color:var(--g);transform:translateX(3px)}
+
+/* ── KATA PENGANTAR LAYOUT ── */
+.kata-layout{display:grid;grid-template-columns:1fr 280px;gap:18px;align-items:start}
+@media(max-width:700px){.kata-layout{grid-template-columns:1fr}}
+.kata-text-col{display:flex;flex-direction:column;gap:0}
+.kata-greeting{font-size:.8rem;color:var(--txt3);font-style:italic;margin-bottom:6px}
+.kata-welcome{font-family:'Sora',sans-serif;font-size:1.05rem;font-weight:800;color:var(--g);margin-bottom:14px;line-height:1.3}
+.kata-body{font-size:.84rem;color:var(--txt2);line-height:1.85;margin-bottom:12px}
+.kata-sign{margin-top:16px;padding-top:14px;border-top:2px solid var(--gl)}
+.kata-sign-line{width:36px;height:3px;background:var(--g);border-radius:2px;margin-bottom:8px}
+.kata-sign-warm{font-size:.78rem;color:var(--txt3);margin-bottom:4px}
+.kata-sign-name{font-family:'Sora',sans-serif;font-size:1rem;font-weight:800;color:var(--txt);margin-bottom:2px}
+.kata-sign-role{font-size:.7rem;color:var(--txt3)}
+.kata-quote-col{display:flex;flex-direction:column;gap:12px}
+.kata-quote-box{background:linear-gradient(135deg,var(--gd),var(--g));border-radius:14px;padding:20px;position:relative;overflow:hidden}
+.kata-quote-box::before{content:'';position:absolute;right:-18px;bottom:-18px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.07)}
+.kata-quote-mark{font-family:'Sora',sans-serif;font-size:3rem;color:rgba(255,255,255,.25);line-height:.8;margin-bottom:8px;font-weight:800}
+.kata-quote-text{font-size:.84rem;color:#fff;font-style:italic;line-height:1.65;margin-bottom:12px;font-weight:500}
+.kata-quote-attr{font-size:.68rem;color:rgba(255,255,255,.6);font-weight:600}
+.kata-info-box{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.kata-info-row{display:flex;align-items:center;gap:10px}
+.kata-info-ico{font-size:1.1rem;flex-shrink:0;width:28px;text-align:center}
+.kata-info-lbl{display:block;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--txt3);margin-bottom:1px}
+.kata-info-val{display:block;font-size:.8rem;font-weight:700;color:var(--txt)}
+
+
+/* ── PHOTO COLLAGE ── */
+/* section: tidak ada background sendiri, mengalir langsung dari hero */
+.collage-section{margin:0;position:relative}
+.collage-bridge{display:none}
+
+/* panel-home: putih, gradien hanya di .hero */
+#panel-home{background:#fff;}
+
+/* collage-inner: putih bersih */
+.collage-inner{
+  background:#fff;
+  padding:0 18px 12px;
+}
+
+.collage-label-row{display:flex;align-items:center;gap:8px;padding:16px 0 10px}
+.collage-label{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--g)}
+.collage-sublabel{font-size:.7rem;color:var(--txt3);flex:1}
+.collage-upload-btn{font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,.8);color:var(--g);border:1.5px solid var(--gm);cursor:pointer;transition:.2s;white-space:nowrap}
+.collage-upload-btn:hover{background:#fff}
+
+/* SVG illustration layer inside each slot */
+.cs-vis{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+
+/* track landscape 16:7 — snap scroll full width */
+.collage-track{
+  display:flex;gap:0;overflow-x:auto;
+  scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;
+  scroll-behavior:smooth;
+  border-radius:13px;overflow:hidden;
+  aspect-ratio:16/7;
+  box-shadow:0 6px 28px rgba(15,92,58,.18);
+}
+.collage-track::-webkit-scrollbar{display:none}
+
+.collage-slot{
+  min-width:100%;height:100%;
+  scroll-snap-align:start;flex-shrink:0;
+  position:relative;overflow:hidden;
+  background:#0b3d27;cursor:default;
+}
+.collage-slot:hover .collage-overlay{opacity:1}
+.collage-img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  display:block;
+  transition:transform .4s ease;
+}
+.collage-slot:hover .collage-img{transform:scale(1.03)}
+.collage-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:8px;color:rgba(255,255,255,.5)}
+.collage-empty span:first-child{font-size:2rem;opacity:.5}
+.collage-hint{font-size:.72rem;font-weight:600}
+.collage-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 100%);
+  padding:30px 16px 12px;
+  font-size:.74rem;font-weight:700;color:#fff;
+  display:flex;align-items:center;gap:6px;
+}
+.cc-flag{font-size:.95rem}
+.collage-overlay{
+  position:absolute;inset:0;
+  background:rgba(15,92,58,.42);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:700;color:#fff;
+  opacity:0;transition:.22s;backdrop-filter:blur(3px);
+}
+.collage-dots{display:flex;justify-content:center;gap:6px;padding:10px 0 4px}
+.cdot{width:7px;height:7px;border-radius:50%;background:rgba(15,92,58,.2);cursor:pointer;transition:.25s}
+.cdot.active{background:var(--g);width:22px;border-radius:4px}
+.admin-mode .collage-slot{cursor:pointer}
+.admin-mode .collage-slot:hover .collage-overlay{opacity:1}
+.collage-admin-hint{display:none}
+
+/* collage full-grid dalam panel collage */
+.collage-full-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.collage-full-grid .cfg-slot:first-child{grid-column:1/3;aspect-ratio:16/7}
+.cfg-slot{border-radius:12px;overflow:hidden;position:relative;background:var(--bg);border:2px dashed var(--border);cursor:default;transition:.2s;aspect-ratio:16/9}
+.cfg-slot:hover .collage-overlay{opacity:1}
+.cfg-img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.collage-admin-note{text-align:center;font-size:.7rem;color:var(--g);background:var(--gl);border-radius:8px;padding:8px 12px;border:1px solid var(--gm)}
+.admin-mode .cfg-slot{cursor:pointer;border-color:var(--gm);border-style:dashed}
+.admin-mode .cfg-slot:hover .collage-overlay{opacity:1}
+.kata-strip{margin:0 18px 18px;background:linear-gradient(135deg,var(--gd),var(--g));border-radius:13px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;position:relative;overflow:hidden;cursor:pointer;transition:.2s}
+.kata-strip:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(11,61,39,.25)}
+.kata-strip::before{content:'';position:absolute;right:-20px;top:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none}
+.ks-q{font-size:2.5rem;color:rgba(255,255,255,.18);font-family:'Sora',sans-serif;font-weight:800;line-height:1;flex-shrink:0;margin-top:2px}
+.ks-body{position:relative;z-index:1}
+.ks-label{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.5);margin-bottom:5px}
+.ks-text{font-size:.8rem;color:rgba(255,255,255,.82);line-height:1.65;outline:none}
+.ks-name{font-size:.72rem;font-weight:800;color:#fff;margin-top:8px;outline:none}
+.ks-role{font-size:.62rem;color:rgba(255,255,255,.5);outline:none}
+
+/* ════ INNER PANELS (tersembunyi) ════ */
+/* ── ALL PANELS: putih bersih ── */
+.panel{display:none;background:#fff}
+.panel.active{display:block;animation:fadeUp .2s ease;background:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.pi{padding:22px;max-width:820px}
+.ph{margin-bottom:20px}
+.ptag{display:inline-flex;align-items:center;gap:4px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g);background:var(--gl);padding:3px 10px;border-radius:20px;margin-bottom:8px}
+.ptitle{font-family:'Sora',sans-serif;font-size:1.65rem;font-weight:800;color:var(--txt);line-height:1.12;letter-spacing:-.025em;outline:none}
+.plead{font-size:.9rem;color:var(--txt2);line-height:1.75;margin-top:8px;outline:none}
+
+/* back bar */
+.back-bar{display:flex;align-items:center;gap:8px;padding:12px 18px;background:#fff;border-bottom:1.5px solid var(--border);cursor:pointer;user-select:none}
+.back-bar:hover{background:var(--gl)}
+.back-ico{width:28px;height:28px;background:var(--white);border:1.5px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0}
+.back-ttl{font-size:.78rem;font-weight:700;color:var(--g)}
+.back-path{font-size:.66rem;color:var(--txt3);margin-left:auto}
+
+/* grids */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.col{display:flex;flex-direction:column;gap:10px}
+
+/* section label */
+.slbl{font-size:.61rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--txt3);margin:16px 0 8px;display:flex;align-items:center;gap:7px}
+.slbl::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* card */
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;transition:.2s}
+.card:hover{border-color:var(--gm);box-shadow:0 4px 14px rgba(26,140,92,.07);transform:translateY(-2px)}
+
+/* vm */
+.vm{padding:13px}
+.vm h3{font-family:'Sora',sans-serif;font-size:.84rem;font-weight:800;color:var(--g);margin-bottom:6px;display:flex;align-items:center;gap:5px;outline:none}
+.vm p{font-size:.78rem;color:var(--txt2);line-height:1.65;outline:none}
+.vm ul{list-style:none;display:flex;flex-direction:column;gap:4px;margin-top:2px}
+.vm li{font-size:.77rem;color:var(--txt2);display:flex;gap:6px;align-items:flex-start;line-height:1.5}
+.vm li::before{content:'✓';color:var(--g);font-weight:800;flex-shrink:0;font-size:.65rem;margin-top:2px}
+.vm li span{outline:none}
+
+/* grow */
+.grow{display:flex;gap:9px;align-items:flex-start;padding:9px 12px}
+.grow:not(:last-child){border-bottom:1px solid var(--border)}
+.gi{font-size:.95rem;flex-shrink:0;margin-top:1px}
+.gt2{font-size:.79rem;color:var(--txt2);line-height:1.6;outline:none}
+.gt2 strong{color:var(--txt)}
+
+/* bc */
+.bc{padding:12px;display:flex;flex-direction:column;gap:4px}
+.bc-i{font-size:1.25rem}
+.bc-t{font-size:.76rem;font-weight:700;color:var(--txt);outline:none}
+.bc-d{font-size:.69rem;color:var(--txt2);line-height:1.5;outline:none}
+
+/* accent cards */
+.ac{border-radius:12px;padding:13px;position:relative;overflow:hidden}
+.ac::after{content:'';position:absolute;right:-15px;top:-15px;width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}
+.ac-g{background:linear-gradient(135deg,var(--g),var(--gt))}
+.ac-a{background:linear-gradient(135deg,#f59e0b,#fbbf24)}
+.ac-b{background:linear-gradient(135deg,#3b82f6,#60a5fa)}
+.ac-r{background:linear-gradient(135deg,#f43f5e,#fb7185)}
+.ac-emo{font-size:1.45rem;display:block;margin-bottom:6px}
+.ac-ttl{font-size:.8rem;font-weight:800;color:#fff;margin-bottom:3px;font-family:'Sora',sans-serif;outline:none}
+.ac-txt{font-size:.7rem;color:rgba(255,255,255,.8);line-height:1.5;outline:none}
+
+/* list item */
+.li2{display:flex;align-items:flex-start;gap:9px;padding:8px 12px;background:var(--white);border:1.5px solid var(--border);border-radius:8px;transition:.2s;margin-bottom:6px}
+.li2:hover{border-color:var(--gm);background:var(--gl)}
+.li-ico{font-size:.85rem;flex-shrink:0;margin-top:1px}
+.li-t{font-size:.78rem;font-weight:700;color:var(--txt);outline:none}
+.li-d{font-size:.7rem;color:var(--txt2);margin-top:2px;outline:none}
+
+/* itinerary */
+.itl{position:relative}
+.itl::before{content:'';position:absolute;left:16px;top:14px;bottom:14px;width:2px;background:linear-gradient(to bottom,var(--g),var(--gm));border-radius:2px}
+.itr{display:flex;gap:11px;align-items:flex-start;padding:3px 0}
+.itd{width:33px;height:33px;flex-shrink:0;background:var(--white);border:2px solid var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:var(--g);position:relative;z-index:1;box-shadow:0 0 0 3px var(--gl)}
+.itr:last-child .itd{border-color:var(--amber);color:var(--amber);box-shadow:0 0 0 3px var(--ambl)}
+.itb{flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;margin-bottom:6px;transition:.2s}
+.itb:hover{border-color:var(--gm)}
+.it-tag{font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--g);background:var(--gl);padding:2px 6px;border-radius:4px;display:inline-block;margin-bottom:3px}
+.it-ttl{font-family:'Sora',sans-serif;font-size:.83rem;font-weight:800;color:var(--txt);margin-bottom:2px;outline:none}
+.it-d{font-size:.73rem;color:var(--txt2);line-height:1.6;outline:none}
+
+/* guide */
+.gh{background:var(--g);padding:10px 13px;display:flex;align-items:center;gap:8px}
+.gh-ico{width:27px;height:27px;background:rgba(255,255,255,.18);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.gh-t{font-size:.79rem;font-weight:800;color:#fff}
+.gb{padding:11px 13px;background:var(--white)}
+.glist{list-style:none;display:flex;flex-direction:column;gap:5px}
+.glist li{font-size:.75rem;color:var(--txt2);display:flex;gap:6px;align-items:flex-start;line-height:1.5}
+.glist li::before{content:'→';color:var(--g);font-weight:700;flex-shrink:0;font-size:.67rem;margin-top:1px}
+.glist li span{outline:none}
+
+.ri{display:flex;gap:7px;align-items:flex-start;font-size:.77rem;color:var(--txt2);line-height:1.5;margin-bottom:5px}
+.ri span[contenteditable]{outline:none}
+
+/* mentoring */
+.phase-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;transition:.2s}
+.phase-card:hover{border-color:var(--gm);box-shadow:0 4px 14px rgba(26,140,92,.07)}
+.phase-h{background:var(--g);padding:10px 14px;display:flex;align-items:center;gap:9px}
+.phase-num{width:26px;height:26px;background:rgba(255,255,255,.2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0}
+.phase-ttl{font-size:.82rem;font-weight:800;color:#fff;outline:none}
+.phase-sub{font-size:.62rem;color:rgba(255,255,255,.6);margin-top:1px;outline:none}
+.phase-b{padding:11px 14px;display:flex;flex-direction:column;gap:5px}
+.phase-item{display:flex;gap:7px;align-items:flex-start;font-size:.77rem;color:var(--txt2);line-height:1.5}
+.phase-item::before{content:'•';color:var(--g);font-weight:800;flex-shrink:0}
+.phase-item span{outline:none}
+
+/* benefit peserta */
+.bp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.bp-item{background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:13px;display:flex;flex-direction:column;gap:5px;transition:.2s}
+.bp-item:hover{border-color:var(--gm);background:var(--gl)}
+.bp-ico{width:32px;height:32px;background:var(--gl);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.bp-t{font-size:.77rem;font-weight:800;color:var(--txt);outline:none}
+.bp-d{font-size:.69rem;color:var(--txt2);line-height:1.45;outline:none}
+
+/* reg */
+.rcard{border-radius:12px;overflow:hidden;border:2px solid transparent;transition:.25s}
+.rcard:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(26,140,92,.1)}
+.rcard.ft{border-color:var(--g)}
+.rh{padding:13px}
+.rh.gr{background:linear-gradient(135deg,var(--g),var(--gt))}
+.rh.te{background:linear-gradient(135deg,var(--gt),#0ea5e9)}
+.rh.sl{background:linear-gradient(135deg,#475569,#64748b)}
+.rn{font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:rgba(255,255,255,.2);line-height:1}
+.rname{font-size:.88rem;font-weight:800;color:#fff;font-family:'Sora',sans-serif;outline:none}
+.rbadge{font-size:.56rem;font-weight:800;background:rgba(255,255,255,.22);color:#fff;padding:2px 7px;border-radius:20px;display:inline-block;margin-top:3px}
+.rb{background:var(--white);padding:11px 13px}
+.rl{font-size:.76rem;color:var(--txt2);display:flex;gap:5px;line-height:1.5;margin-bottom:5px;align-items:flex-start}
+.rl strong{color:var(--txt);font-weight:700}
+.rl span{outline:none}
+
+.bgi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:11px}
+.bi{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:10px;display:flex;gap:7px;align-items:flex-start;transition:.2s}
+.bi:hover{border-color:var(--gm);background:var(--gl)}
+.bi-ic{width:26px;height:26px;background:var(--gl);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.74rem;flex-shrink:0}
+.bi-t{font-size:.71rem;font-weight:800;color:var(--txt);outline:none}
+.bi-d{font-size:.66rem;color:var(--txt3);line-height:1.4;margin-top:1px;outline:none}
+
+/* timeline */
+.sw{background:var(--white);border:1.5px solid var(--border);border-radius:14px;overflow:hidden}
+.sh{background:linear-gradient(135deg,var(--gd),var(--g));padding:13px 17px}
+.sh h3{font-family:'Sora',sans-serif;font-size:.9rem;font-weight:800;color:#fff;margin-bottom:2px;outline:none}
+.sh p{font-size:.69rem;color:rgba(255,255,255,.66);outline:none}
+.sb{padding:13px 17px;display:flex;flex-direction:column;gap:0}
+.ss{display:flex;gap:10px;align-items:flex-start;position:relative}
+.ss::before{content:'';position:absolute;left:12px;top:27px;bottom:-5px;width:1.5px;background:var(--border)}
+.ss:last-child::before{display:none}
+.s-bull{width:25px;height:25px;flex-shrink:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;background:var(--gl);border:2px solid var(--gm);position:relative;z-index:1}
+.ss.dep .s-bull{background:var(--ambl);border-color:var(--amber)}
+.sc{flex:1;padding:2px 0 12px}
+.sd{font-size:.59rem;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:1px;outline:none}
+.ss.dep .sd{color:var(--amber)}
+.se{font-size:.78rem;font-weight:700;color:var(--txt);outline:none}
+.sn{font-size:.69rem;color:var(--txt3);margin-top:2px;line-height:1.4;outline:none}
+
+.dbox{background:var(--gl);border:1.5px solid var(--gm);border-radius:8px;padding:11px 13px;margin-top:11px}
+.dbox h4{font-size:.69rem;font-weight:800;color:var(--g);margin-bottom:6px}
+.dtags{display:flex;flex-wrap:wrap;gap:5px}
+.dtag{font-size:.64rem;font-weight:600;background:var(--white);color:var(--txt2);border:1.5px solid var(--border);padding:2px 7px;border-radius:5px}
+
+/* faq */
+.flist{display:flex;flex-direction:column;gap:7px}
+.fi{background:var(--white);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;transition:.25s}
+.fi.open{border-color:var(--g);box-shadow:0 4px 14px rgba(26,140,92,.08)}
+.fq{padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;user-select:none}
+.fq-t{font-size:.8rem;font-weight:700;color:var(--txt);line-height:1.4;outline:none}
+.ftog{width:22px;height:22px;flex-shrink:0;border-radius:6px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--txt2);transition:.25s}
+.fi.open .ftog{background:var(--g);color:#fff;transform:rotate(45deg)}
+.fa{display:none;padding:0 13px 11px;font-size:.77rem;color:var(--txt2);line-height:1.7;border-top:1px solid var(--border);padding-top:9px;outline:none}
+.fi.open .fa{display:block}
+
+/* contact */
+.cgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:12px}
+.clinks{display:flex;flex-direction:column;gap:7px}
+.clink{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:8px;text-decoration:none;transition:.2s;cursor:pointer}
+.clink:hover{border-color:var(--gm);transform:translateX(3px);background:var(--gl)}
+.cl-ic{width:32px;height:32px;background:var(--gl);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.88rem;flex-shrink:0}
+.cl-lbl{font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--txt3);display:block;margin-bottom:2px}
+.cl-val{font-size:.79rem;font-weight:700;color:var(--txt);outline:none}
+.cta-box{background:linear-gradient(135deg,var(--gd),var(--g));border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:9px;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-24px;right:-24px;width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.06)}
+.cta-box h3{font-family:'Sora',sans-serif;font-size:1rem;font-weight:800;color:#fff;line-height:1.25;position:relative;z-index:1;outline:none}
+.cta-box p{font-size:.74rem;color:rgba(255,255,255,.78);line-height:1.65;position:relative;z-index:1;outline:none}
+.cta-ms{display:flex;flex-direction:column;gap:4px;position:relative;z-index:1}
+.cta-m{font-size:.71rem;color:rgba(255,255,255,.66);display:flex;align-items:center;gap:5px}
+.cta-m strong{color:#fff;font-weight:700;outline:none}
+.cta-btn{background:#fff;color:var(--g);font-weight:800;font-size:.75rem;padding:9px;border-radius:8px;text-align:center;text-decoration:none;display:block;transition:.2s;position:relative;z-index:1;outline:none}
+.cta-btn:hover{background:var(--gl);transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.18)}
+
+/* quote box */
+.qbox{background:var(--gd);border-radius:12px;padding:18px 20px;position:relative;overflow:hidden;margin-top:14px}
+.qbox::before{content:'"';position:absolute;top:-8px;left:14px;font-size:5rem;color:rgba(255,255,255,.08);font-family:'Sora',sans-serif;line-height:1}
+.qbox-txt{font-size:.82rem;color:rgba(255,255,255,.82);line-height:1.7;font-style:italic;position:relative;z-index:1;outline:none}
+
+#toast{position:fixed;bottom:18px;right:18px;background:var(--g);color:#fff;padding:8px 14px;border-radius:9px;font-size:.72rem;font-weight:700;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+#toast.show{opacity:1}
+/* ══════════════════════════════════════
+   RESPONSIVE — TABLET & MOBILE
+══════════════════════════════════════ */
+
+/* ── Tablet (≤ 768px) ── */
+@media (max-width: 768px) {
+  /* Topbar */
+  .topbar-chips{display:none}
+  .brand-sub{display:none}
+
+  /* Sidebar: hilang dari layout, jadi overlay drawer */
+  .sidebar{
+    position:fixed;left:0;top:52px;bottom:0;
+    transform:translateX(-100%);
+    transition:transform .28s cubic-bezier(.4,0,.2,1);
+    z-index:300;width:220px !important;
+    box-shadow:4px 0 24px rgba(0,0,0,.22);
+  }
+  .sidebar.open{transform:translateX(0)}
+  .sg-lbl{opacity:1 !important}
+  .nav-lbl{opacity:1 !important}
+  /* overlay backdrop */
+  .sb-backdrop{display:block !important}
+
+  /* Admin bar */
+  .admin-bar .ab-msg{display:none}
+
+  /* Hero */
+  .hero{padding:28px 20px 52px}
+  .hflex{flex-direction:column;gap:16px;align-items:stretch}
+  .hcard{flex:none;width:100%}
+  .h-title{font-size:clamp(1.7rem,6vw,2.4rem)}
+  .h-sub{font-size:.82rem;max-width:100%}
+  .h-stats{gap:0}
+  .hst{padding:0 12px 0 0}
+  .hst:not(:first-child){padding-left:12px}
+  .hst-n{font-size:1.5rem}
+
+  /* Menu grid: 2 kolom */
+  .menu-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .pi{padding:16px}
+
+  /* Kata layout */
+  .kata-layout{grid-template-columns:1fr}
+
+  /* Grids: tablet 2 col */
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .bp-grid{grid-template-columns:repeat(2,1fr)}
+  .bgi{grid-template-columns:repeat(2,1fr)}
+  .cgrid{grid-template-columns:1fr}
+  .collage-full-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ── Mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  /* Topbar */
+  .topbar{padding:0 10px}
+  .brand-name{font-size:.78rem}
+  .reg-btn{font-size:.65rem;padding:5px 9px}
+
+  /* Hero: compact */
+  .hero{padding:22px 16px 48px}
+  .h-pill{font-size:.58rem;padding:3px 9px}
+  .h-title{font-size:clamp(1.5rem,7.5vw,2rem)}
+  .h-sub{font-size:.78rem}
+  .h-stats{flex-wrap:wrap;gap:8px}
+  .hst{padding:0 10px 0 0}
+  .hst:not(:first-child){padding-left:10px}
+  .hst-n{font-size:1.3rem}
+  .h-btns{flex-direction:column;gap:6px}
+  .btn-w,.btn-o{justify-content:center;text-align:center}
+
+  /* Info card: condensed */
+  .hcard{border-radius:10px}
+  .hcard-rows{gap:5px}
+
+  /* Menu grid: 2 kolom kecil */
+  .menu-grid{grid-template-columns:repeat(2,1fr);gap:7px}
+  .mcard{padding:12px 10px 10px}
+  .mcard-ico{width:32px;height:32px;font-size:1rem;border-radius:8px}
+  .mcard-ttl{font-size:.74rem}
+  .mcard-sub{display:none}
+
+  /* Kata strip */
+  .kata-strip{padding:14px 14px}
+  .ks-q{font-size:1.8rem}
+
+  /* Panel inner */
+  .pi{padding:14px}
+  .ptitle{font-size:1.3rem}
+  .plead{font-size:.82rem}
+
+  /* Collage galeri */
+  .collage-track{aspect-ratio:4/3}
+  .collage-caption{font-size:.65rem;padding:18px 10px 8px}
+  .collage-label-row{padding:10px 0 8px}
+  .collage-label{font-size:.66rem}
+  .collage-inner{padding:0 12px 8px}
+
+  /* All grids: 1 kolom */
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .bp-grid{grid-template-columns:1fr}
+  .bgi{grid-template-columns:repeat(2,1fr)}
+  .cgrid{grid-template-columns:1fr}
+  .collage-full-grid{grid-template-columns:1fr}
+  .collage-full-grid .cfg-slot:first-child{grid-column:1}
+
+  /* Back bar */
+  .back-path{display:none}
+
+  /* Timeline nodes */
+  .tl-node{padding-left:44px}
+  .tl-dot{left:10px}
+
+  /* Modal */
+  .modal-box{width:calc(100vw - 32px);border-radius:16px}
+  .modal-head{padding:16px 18px 14px}
+  .modal-body{padding:16px 18px}
+
+  /* Toast */
+  #toast{right:12px;bottom:12px;font-size:.68rem}
+}
+
+/* ── Content area saat sidebar overlay terbuka ── */
+.sb-backdrop{
+  display:none;
+  position:fixed;inset:0;top:52px;
+  background:rgba(0,0,0,.38);
+  z-index:299;
+  backdrop-filter:blur(2px);
+}
+
+/* ── Disable hover tooltip on touch devices ── */
+@media (hover:none) {
+  .sidebar:not(.open) .nav-item:hover::after{display:none}
+}
+
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-mark" onclick="document.getElementById('logoInput').click()">
+      <span id="logoEmoji">✈️</span>
+      <img id="logoImg" alt="logo">
+      <div class="upload-hint">Ganti<br>Logo</div>
+    </div>
+    <input type="file" id="logoInput" accept="image/*">
+    <div class="brand-text">
+      <span class="brand-name" contenteditable="false">GlobaLearn Journey</span>
+      <span class="brand-sub" contenteditable="false">Batch 1 · 2026</span>
+    </div>
+  </div>
+  <div class="topbar-chips">
+    <span class="chip" contenteditable="false">🇲🇾 Malaysia</span>
+    <span class="chip" contenteditable="false">🇸🇬 Singapura</span>
+    <span class="chip" contenteditable="false" style="background:rgba(245,158,11,.2);border-color:rgba(245,158,11,.3)">📅 5–8 Feb 2026</span>
+  </div>
+  <div class="topbar-right">
+    <span class="admin-badge" id="adminBadge">🔐 Admin</span>
+    <button class="edit-btn" id="editBtn" onclick="toggleEdit()">✏️ Edit</button>
+    <button class="reg-btn" onclick="goPanel('contact')">🚀 Daftar</button>
+  </div>
+</div>
+
+<!-- ADMIN BAR (muncul hanya setelah login) -->
+<div class="admin-bar" id="adminBar">
+  <span class="ab-badge">🔐 Admin Mode</span>
+  <span class="ab-msg">Kamu login sebagai admin — semua fitur edit aktif</span>
+  <div class="ab-actions">
+    <button class="ab-btn amber" id="editBtnBar" onclick="toggleEdit()">✏️ Edit Konten</button>
+    <button class="ab-btn primary" onclick="document.getElementById('logoInput').click()">🖼️ Upload Logo</button>
+    <button class="ab-btn danger" onclick="adminLogout()">⬠ Keluar</button>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeLogin()">✕</button>
+      <div class="modal-head-ico">🔐</div>
+      <h2>Admin Login</h2>
+      <p>Masuk untuk mengedit konten website</p>
+    </div>
+    <div class="modal-body">
+      <div class="login-err" id="loginErr">❌ Username atau password salah. Coba lagi.</div>
+      <label class="field-label" for="loginUser">Username</label>
+      <input class="field-input" id="loginUser" type="text" placeholder="Masukkan username..." autocomplete="off">
+      <label class="field-label" for="loginPass">Password</label>
+      <input class="field-input" id="loginPass" type="password" placeholder="Masukkan password..." onkeydown="if(event.key==='Enter')doLogin()">
+      <button class="login-submit" onclick="doLogin()">🔓 Masuk sebagai Admin</button>
+    </div>
+    <div class="modal-foot">Hanya untuk pengelola program · <strong>GlobaLearn Journey 2026</strong></div>
+  </div>
+</div>
+
+<!-- ADMIN TRIGGER TERSEMBUNYI (pojok kanan bawah, invisible) -->
+<div class="admin-trigger" id="adminTrigger" onclick="openLogin()"></div>
+
+<!-- LAYOUT -->
+<div class="sb-backdrop" id="sbBackdrop" onclick="closeSidebar()"></div>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <button class="sb-toggle" onclick="toggleSidebar()">☰</button>
+
+    <div class="sg-lbl">Utama</div>
+    <div class="nav-item active" data-label="Beranda" onclick="goPanel('home')">
+      <div class="nav-ico">🏠</div><span class="nav-lbl">Beranda</span>
+    </div>
+    <div class="nav-item" id="navCollage" data-label="Kolase Foto" onclick="goPanel('collage')">
+      <div class="nav-ico">📸</div><span class="nav-lbl">Kolase Foto</span>
+    </div>
+    <div class="nav-item" data-label="Kata Pengantar" onclick="goPanel('kata')">
+      <div class="nav-ico">📝</div><span class="nav-lbl">Kata Pengantar</span>
+    </div>
+
+    <div class="sg-lbl">Program</div>
+    <div class="nav-item" data-label="Tentang Program" onclick="goPanel('about')">
+      <div class="nav-ico">📖</div><span class="nav-lbl">Tentang Program</span>
+    </div>
+    <div class="nav-item" data-label="Highlight" onclick="goPanel('highlights')">
+      <div class="nav-ico">⭐</div><span class="nav-lbl">Highlight</span>
+    </div>
+    <div class="nav-item" data-label="Itinerary" onclick="goPanel('itinerary')">
+      <div class="nav-ico">🗓️</div><span class="nav-lbl">Itinerary</span>
+    </div>
+    <div class="nav-item" data-label="Panduan Kegiatan" onclick="goPanel('guide')">
+      <div class="nav-ico">📋</div><span class="nav-lbl">Panduan Kegiatan</span>
+    </div>
+    <div class="nav-item" data-label="Mentoring" onclick="goPanel('mentoring')">
+      <div class="nav-ico">🎓</div><span class="nav-lbl">Mentoring</span>
+    </div>
+
+    <div class="sg-lbl">Pendaftaran</div>
+    <div class="nav-item" data-label="Benefit Peserta" onclick="goPanel('benefit')">
+      <div class="nav-ico">🎁</div><span class="nav-lbl">Benefit Peserta</span>
+    </div>
+    <div class="nav-item" data-label="Jalur Pendaftaran" onclick="goPanel('registration')">
+      <div class="nav-ico">🎟️</div><span class="nav-lbl">Jalur Pendaftaran</span>
+    </div>
+    <div class="nav-item" data-label="Timeline Seleksi" onclick="goPanel('timeline')">
+      <div class="nav-ico">⏱️</div><span class="nav-lbl">Timeline Seleksi</span>
+    </div>
+
+    <div class="sg-lbl">Bantuan</div>
+    <div class="nav-item" data-label="FAQ" onclick="goPanel('faq')">
+      <div class="nav-ico">❓</div><span class="nav-lbl">FAQ</span>
+    </div>
+    <div class="nav-item" data-label="Kontak" onclick="goPanel('contact')">
+      <div class="nav-ico">📬</div><span class="nav-lbl">Kontak</span>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="content" id="content">
+
+  <!-- ══════════════════════════
+       BERANDA (satu-satunya yang tampil di awal)
+  ══════════════════════════ -->
+  <div class="panel active" id="panel-home">
+
+    <!-- Hero Banner -->
+    <div class="hero">
+      <div class="hd a"></div><div class="hd b"></div>
+      <div class="hflex">
+        <div class="hl">
+          <div class="h-pill" contenteditable="false">🌏 Batch 1 · International Program 2026</div>
+          <div class="h-title" contenteditable="false">Empowering<br><span class="gr">Global Youth Leaders</span></div>
+          <div class="h-sub" contenteditable="false">Program experiential learning internasional yang menggabungkan pendidikan, diplomasi budaya, kepemimpinan, dan eksplorasi global untuk generasi muda Indonesia.</div>
+          <div class="h-stats">
+            <div class="hst"><span class="hst-n" contenteditable="false">4</span><span class="hst-l" contenteditable="false">Hari</span></div>
+            <div class="hst"><span class="hst-n" contenteditable="false">2</span><span class="hst-l" contenteditable="false">Negara</span></div>
+            <div class="hst"><span class="hst-n" contenteditable="false">40</span><span class="hst-l" contenteditable="false">Peserta</span></div>
+            <div class="hst"><span class="hst-n" contenteditable="false">15–30</span><span class="hst-l" contenteditable="false">Usia</span></div>
+          </div>
+          <div class="h-btns">
+            <a href="https://bit.ly/DaftarGlobaLearn" target="_blank" class="btn-w">🚀 Daftar Sekarang</a>
+            <button class="btn-o" onclick="goPanel('about')">Pelajari Program →</button>
+          </div>
+        </div>
+        <div class="hcard">
+          <div class="hcard-top">
+            <span class="hcard-badge">INFO PROGRAM</span>
+            <div class="hcard-h" contenteditable="false">Keberangkatan Batch 1</div>
+          </div>
+          <div class="hcard-rows">
+            <div class="hcard-row"><div class="hcard-ico">📅</div><div><span class="hcard-lbl">Tanggal</span><span class="hcard-val" contenteditable="false">5–8 Februari 2026</span></div></div>
+            <div class="hcard-row"><div class="hcard-ico">⏳</div><div><span class="hcard-lbl">Deadline Daftar</span><span class="hcard-val" contenteditable="false">15 November 2025</span></div></div>
+            <div class="hcard-row"><div class="hcard-ico">🌏</div><div><span class="hcard-lbl">Tujuan</span><span class="hcard-val" contenteditable="false">Malaysia & Singapura</span></div></div>
+            <div class="hcard-row"><div class="hcard-ico">👥</div><div><span class="hcard-lbl">Terbuka untuk</span><span class="hcard-val" contenteditable="false">Pelajar, Mahasiswa, Profesional</span></div></div>
+          </div>
+          <a href="https://bit.ly/DaftarGlobaLearn" target="_blank" class="hcard-cta" contenteditable="false">bit.ly/DaftarGlobaLearn →</a>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- Kata Pengantar strip — klik buka detail -->
+    <div class="kata-strip" onclick="goPanel('kata')">
+      <div class="ks-q">"</div>
+      <div class="ks-body">
+        <div class="ks-label">Kata Pengantar — Klik untuk baca selengkapnya</div>
+        <div class="ks-text" contenteditable="false">Selamat datang di GlobaLearn Journey! Kami percaya bahwa mengenal dunia dimulai dari mengenal sudut pandang orang lain...</div>
+        <div class="ks-name" contenteditable="false">Rama</div>
+        <div class="ks-role" contenteditable="false">Executive Director · GlobaLearn Journey</div>
+      </div>
+    </div>
+
+    <!-- KOLASE FOTO: menyatu dengan hero, tidak ada batas -->
+    <div class="collage-section">
+      <div class="collage-inner">
+        <div class="collage-label-row">
+          <div class="collage-label">📸 Galeri Program</div>
+          <div class="collage-sublabel">Destinasi & Momen GlobaLearn Journey</div>
+          <button class="collage-upload-btn" id="collageUploadBtn" onclick="triggerPhotoUpload(currentCollageSlot||0)" style="display:none">📷 Ganti Foto</button>
+        </div>
+        <div class="collage-track" id="collageTrack">
+
+          <!-- Slide 1: Petronas Twin Towers -->
+          <div class="collage-slot" data-slot="0" onclick="isAdmin && triggerPhotoUpload(0)">
+            <div class="cs-vis" style="background:linear-gradient(160deg,#0a1628 0%,#0d2a4a 40%,#1a4a6b 70%,#2d7a8a 100%)">
+              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                <!-- stars -->
+                <circle cx="30" cy="20" r="1.2" fill="white" opacity=".7"/><circle cx="80" cy="15" r="1" fill="white" opacity=".5"/><circle cx="130" cy="25" r="1.5" fill="white" opacity=".8"/><circle cx="200" cy="10" r="1" fill="white" opacity=".6"/><circle cx="280" cy="18" r="1.2" fill="white" opacity=".7"/><circle cx="350" cy="12" r="1" fill="white" opacity=".5"/><circle cx="370" cy="30" r="1.3" fill="white" opacity=".6"/>
+                <!-- moon -->
+                <circle cx="340" cy="35" r="18" fill="#fffbe6" opacity=".9"/>
+                <circle cx="348" cy="29" r="14" fill="#0d2a4a" opacity=".85"/>
+                <!-- city glow -->
+                <ellipse cx="200" cy="220" rx="200" ry="60" fill="#1e6ba8" opacity=".3"/>
+                <!-- left tower -->
+                <rect x="122" y="60" width="52" height="155" fill="#4fc3f7" opacity=".18" rx="2"/>
+                <rect x="125" y="62" width="46" height="153" fill="url(#tw1)" rx="2"/>
+                <!-- right tower -->
+                <rect x="226" y="60" width="52" height="155" fill="#4fc3f7" opacity=".18" rx="2"/>
+                <rect x="229" y="62" width="46" height="153" fill="url(#tw2)" rx="2"/>
+                <!-- spires -->
+                <polygon points="148,62 151,20 154,62" fill="#b0bec5" opacity=".9"/>
+                <polygon points="249,62 252,20 255,62" fill="#b0bec5" opacity=".9"/>
+                <!-- sky bridge -->
+                <rect x="171" y="115" width="58" height="10" fill="#78909c" opacity=".85" rx="2"/>
+                <!-- windows grid left -->
+                <g fill="rgba(255,255,200,.18)" font-size="0">
+                  <rect x="129" y="70" width="6" height="4" rx="1"/><rect x="138" y="70" width="6" height="4" rx="1"/><rect x="147" y="70" width="6" height="4" rx="1"/><rect x="156" y="70" width="6" height="4" rx="1"/>
+                  <rect x="129" y="80" width="6" height="4" rx="1"/><rect x="138" y="80" width="6" height="4" rx="1"/><rect x="147" y="80" width="6" height="4" rx="1"/><rect x="156" y="80" width="6" height="4" rx="1"/>
+                  <rect x="129" y="90" width="6" height="4" rx="1"/><rect x="138" y="90" width="6" height="4" rx="1"/><rect x="147" y="90" width="6" height="4" rx="1"/><rect x="156" y="90" width="6" height="4" rx="1"/>
+                  <rect x="129" y="130" width="6" height="4" rx="1"/><rect x="138" y="130" width="6" height="4" rx="1"/><rect x="147" y="130" width="6" height="4" rx="1"/>
+                  <rect x="129" y="145" width="6" height="4" rx="1"/><rect x="138" y="145" width="6" height="4" rx="1"/>
+                </g>
+                <!-- windows grid right -->
+                <g fill="rgba(255,255,200,.18)">
+                  <rect x="233" y="70" width="6" height="4" rx="1"/><rect x="242" y="70" width="6" height="4" rx="1"/><rect x="251" y="70" width="6" height="4" rx="1"/><rect x="260" y="70" width="6" height="4" rx="1"/>
+                  <rect x="233" y="80" width="6" height="4" rx="1"/><rect x="242" y="80" width="6" height="4" rx="1"/><rect x="251" y="80" width="6" height="4" rx="1"/><rect x="260" y="80" width="6" height="4" rx="1"/>
+                  <rect x="233" y="90" width="6" height="4" rx="1"/><rect x="242" y="90" width="6" height="4" rx="1"/><rect x="251" y="90" width="6" height="4" rx="1"/>
+                  <rect x="233" y="130" width="6" height="4" rx="1"/><rect x="242" y="130" width="6" height="4" rx="1"/>
+                  <rect x="233" y="145" width="6" height="4" rx="1"/>
+                </g>
+                <!-- reflection in water -->
+                <rect x="0" y="195" width="400" height="30" fill="#1a3a5c" opacity=".5"/>
+                <rect x="125" y="200" width="46" height="20" fill="#4fc3f7" opacity=".08" rx="1"/>
+                <rect x="229" y="200" width="46" height="20" fill="#4fc3f7" opacity=".08" rx="1"/>
+                <defs>
+                  <linearGradient id="tw1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#607d8b"/><stop offset="50%" stop-color="#90a4ae"/><stop offset="100%" stop-color="#607d8b"/></linearGradient>
+                  <linearGradient id="tw2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#607d8b"/><stop offset="50%" stop-color="#90a4ae"/><stop offset="100%" stop-color="#607d8b"/></linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <img class="collage-img" id="cimg-0" style="display:none" alt="Petronas Twin Towers">
+            <div class="collage-caption"><span class="cc-flag">🇲🇾</span> Petronas Twin Towers · Kuala Lumpur</div>
+            <div class="collage-overlay">📷 Ganti foto</div>
+          </div>
+
+          <!-- Slide 2: Singapore Marina Bay -->
+          <div class="collage-slot" data-slot="1" onclick="isAdmin && triggerPhotoUpload(1)">
+            <div class="cs-vis" style="background:linear-gradient(160deg,#0d1b2a 0%,#1a3a5c 35%,#1e6ba8 65%,#4a9fd4 100%)">
+              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                <!-- sky stars -->
+                <circle cx="40" cy="18" r="1" fill="white" opacity=".6"/><circle cx="100" cy="10" r="1.3" fill="white" opacity=".7"/><circle cx="170" cy="22" r="1" fill="white" opacity=".5"/><circle cx="320" cy="15" r="1.2" fill="white" opacity=".7"/><circle cx="380" cy="25" r="1" fill="white" opacity=".5"/>
+                <!-- city glow horizon -->
+                <ellipse cx="200" cy="140" rx="250" ry="50" fill="#ff9800" opacity=".06"/>
+                <!-- MBS building 1 -->
+                <rect x="100" y="100" width="32" height="90" fill="#1e3a5f" rx="2"/>
+                <rect x="102" y="102" width="28" height="88" fill="url(#mbs1)" rx="1"/>
+                <!-- MBS building 2 -->
+                <rect x="140" y="90" width="32" height="100" fill="#1e3a5f" rx="2"/>
+                <rect x="142" y="92" width="28" height="98" fill="url(#mbs1)" rx="1"/>
+                <!-- MBS building 3 -->
+                <rect x="180" y="95" width="32" height="95" fill="#1e3a5f" rx="2"/>
+                <rect x="182" y="97" width="28" height="93" fill="url(#mbs1)" rx="1"/>
+                <!-- MBS rooftop/boat deck -->
+                <path d="M88,100 Q200,78 324,100" fill="#90caf9" opacity=".25" stroke="#90caf9" stroke-width="1"/>
+                <rect x="85" y="95" width="242" height="10" fill="#37474f" opacity=".9" rx="3"/>
+                <ellipse cx="206" cy="90" rx="80" ry="10" fill="#455a64" opacity=".85"/>
+                <!-- infinity pool shimmer -->
+                <rect x="120" y="88" width="172" height="7" fill="#4fc3f7" opacity=".35" rx="2"/>
+                <!-- SG Eye/Flyer right -->
+                <circle cx="340" cy="110" r="35" fill="none" stroke="#90caf9" stroke-width="2" opacity=".5"/>
+                <circle cx="340" cy="110" r="3" fill="#90caf9" opacity=".7"/>
+                <line x1="340" y1="75" x2="340" y2="110" stroke="#90caf9" stroke-width="1" opacity=".5"/>
+                <line x1="305" y1="110" x2="340" y2="110" stroke="#90caf9" stroke-width="1" opacity=".5"/>
+                <!-- water bay -->
+                <rect x="0" y="185" width="400" height="40" fill="#0d2a4a" opacity=".7"/>
+                <path d="M0,185 Q100,178 200,185 Q300,192 400,185 L400,220 L0,220Z" fill="#0a2240" opacity=".8"/>
+                <!-- water light reflections -->
+                <rect x="130" y="188" width="3" height="25" fill="#4fc3f7" opacity=".2" rx="1"/>
+                <rect x="195" y="190" width="2" height="20" fill="#4fc3f7" opacity=".15" rx="1"/>
+                <rect x="255" y="188" width="3" height="22" fill="#4fc3f7" opacity=".18" rx="1"/>
+                <!-- MBS windows -->
+                <g fill="rgba(255,255,180,.2)">
+                  <rect x="104" y="108" width="4" height="3" rx="1"/><rect x="112" y="108" width="4" height="3" rx="1"/><rect x="120" y="108" width="4" height="3" rx="1"/>
+                  <rect x="104" y="116" width="4" height="3" rx="1"/><rect x="112" y="116" width="4" height="3" rx="1"/>
+                  <rect x="144" y="100" width="4" height="3" rx="1"/><rect x="152" y="100" width="4" height="3" rx="1"/><rect x="160" y="100" width="4" height="3" rx="1"/>
+                  <rect x="144" y="110" width="4" height="3" rx="1"/><rect x="152" y="110" width="4" height="3" rx="1"/>
+                </g>
+                <!-- Merlion icon -->
+                <text x="30" y="170" font-size="28" opacity=".6">🦁</text>
+                <defs>
+                  <linearGradient id="mbs1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#263238"/><stop offset="50%" stop-color="#455a64"/><stop offset="100%" stop-color="#263238"/></linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <img class="collage-img" id="cimg-1" style="display:none" alt="Singapore Marina Bay">
+            <div class="collage-caption"><span class="cc-flag">🇸🇬</span> Marina Bay Sands · Singapore</div>
+            <div class="collage-overlay">📷 Ganti foto</div>
+          </div>
+
+          <!-- Slide 3: Universiti Malaya -->
+          <div class="collage-slot" data-slot="2" onclick="isAdmin && triggerPhotoUpload(2)">
+            <div class="cs-vis" style="background:linear-gradient(160deg,#1b3a2d 0%,#2e6b45 40%,#4caf70 75%,#a5d6a7 100%)">
+              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                <!-- sky -->
+                <rect x="0" y="0" width="400" height="120" fill="url(#umsky)" opacity=".5"/>
+                <!-- clouds -->
+                <ellipse cx="80" cy="40" rx="50" ry="18" fill="white" opacity=".15"/>
+                <ellipse cx="320" cy="30" rx="40" ry="14" fill="white" opacity=".12"/>
+                <!-- main building -->
+                <rect x="110" y="95" width="180" height="110" fill="#1a3d2b" rx="3"/>
+                <rect x="112" y="97" width="176" height="108" fill="url(#umbody)" rx="2"/>
+                <!-- dome -->
+                <ellipse cx="200" cy="95" rx="55" ry="18" fill="#1a5c3a"/>
+                <path d="M145,95 Q200,55 255,95" fill="#2e7d52" opacity=".9"/>
+                <path d="M158,95 Q200,62 242,95" fill="#388e60" opacity=".85"/>
+                <!-- dome top spire -->
+                <rect x="197" y="45" width="6" height="22" fill="#ffd54f" opacity=".9"/>
+                <polygon points="200,38 196,48 204,48" fill="#ffd54f" opacity=".9"/>
+                <!-- windows main -->
+                <g fill="rgba(255,255,200,.25)">
+                  <rect x="130" y="110" width="14" height="20" rx="7" 0/><rect x="152" y="110" width="14" height="20" rx="7"/><rect x="174" y="110" width="14" height="20" rx="7"/>
+                  <rect x="212" y="110" width="14" height="20" rx="7"/><rect x="234" y="110" width="14" height="20" rx="7"/><rect x="256" y="110" width="14" height="20" rx="7"/>
+                  <rect x="130" y="140" width="14" height="20" rx="2"/><rect x="152" y="140" width="14" height="20" rx="2"/><rect x="174" y="140" width="14" height="20" rx="2"/>
+                  <rect x="212" y="140" width="14" height="20" rx="2"/><rect x="234" y="140" width="14" height="20" rx="2"/>
+                </g>
+                <!-- columns -->
+                <rect x="140" y="150" width="8" height="55" fill="#1a3d2b" opacity=".7"/>
+                <rect x="190" y="150" width="8" height="55" fill="#1a3d2b" opacity=".7"/>
+                <rect x="252" y="150" width="8" height="55" fill="#1a3d2b" opacity=".7"/>
+                <!-- door -->
+                <rect x="188" y="175" width="24" height="30" fill="#0d2219" rx="2" opacity=".8"/>
+                <!-- trees left -->
+                <rect x="40" y="150" width="8" height="55" fill="#2e7d32"/><ellipse cx="44" cy="145" rx="22" ry="28" fill="#388e3c"/>
+                <rect x="70" y="160" width="6" height="45" fill="#2e7d32"/><ellipse cx="73" cy="156" rx="18" ry="22" fill="#43a047"/>
+                <!-- trees right -->
+                <rect x="332" y="150" width="8" height="55" fill="#2e7d32"/><ellipse cx="336" cy="145" rx="22" ry="28" fill="#388e3c"/>
+                <rect x="355" y="160" width="6" height="45" fill="#2e7d32"/><ellipse cx="358" cy="156" rx="18" ry="22" fill="#43a047"/>
+                <!-- UM sign -->
+                <rect x="170" y="82" width="60" height="18" fill="#1a3d2b" opacity=".85" rx="4"/>
+                <text x="200" y="95" text-anchor="middle" fill="#ffd54f" font-size="11" font-weight="bold" font-family="Arial">UNIVERSITI MALAYA</text>
+                <!-- path/walkway -->
+                <path d="M160,205 L200,190 L240,205" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="3"/>
+                <!-- lawn -->
+                <ellipse cx="200" cy="215" rx="180" ry="15" fill="#2e7d32" opacity=".4"/>
+                <defs>
+                  <linearGradient id="umsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#87ceeb"/><stop offset="100%" stop-color="#4caf70"/></linearGradient>
+                  <linearGradient id="umbody" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2e6b45"/><stop offset="50%" stop-color="#4caf70"/><stop offset="100%" stop-color="#2e6b45"/></linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <img class="collage-img" id="cimg-2" style="display:none" alt="Universiti Malaya">
+            <div class="collage-caption"><span class="cc-flag">🇲🇾</span> Universiti Malaya · Kuala Lumpur</div>
+            <div class="collage-overlay">📷 Ganti foto</div>
+          </div>
+
+          <!-- Slide 4: NUS Singapore -->
+          <div class="collage-slot" data-slot="3" onclick="isAdmin && triggerPhotoUpload(3)">
+            <div class="cs-vis" style="background:linear-gradient(160deg,#0d2137 0%,#1a3a6b 40%,#2962a8 70%,#5b8dd9 100%)">
+              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                <!-- sky -->
+                <circle cx="60" cy="30" r="1" fill="white" opacity=".5"/><circle cx="150" cy="18" r="1.3" fill="white" opacity=".6"/><circle cx="300" cy="22" r="1" fill="white" opacity=".5"/>
+                <!-- clouds -->
+                <ellipse cx="100" cy="45" rx="55" ry="16" fill="white" opacity=".1"/>
+                <ellipse cx="310" cy="35" rx="45" ry="14" fill="white" opacity=".08"/>
+                <!-- main NUS building with columns -->
+                <rect x="90" y="100" width="220" height="120" fill="#0d2137" rx="2"/>
+                <rect x="92" y="102" width="216" height="118" fill="url(#nusbody)" rx="1"/>
+                <!-- triangular pediment -->
+                <polygon points="90,100 200,55 310,100" fill="#1a3a6b" opacity=".95"/>
+                <polygon points="95,100 200,60 305,100" fill="#2962a8" opacity=".8"/>
+                <!-- columns -->
+                <g fill="#e3eaf7" opacity=".35">
+                  <rect x="110" y="100" width="12" height="110" rx="6"/><rect x="135" y="100" width="12" height="110" rx="6"/>
+                  <rect x="160" y="100" width="12" height="110" rx="6"/><rect x="220" y="100" width="12" height="110" rx="6"/>
+                  <rect x="245" y="100" width="12" height="110" rx="6"/><rect x="270" y="100" width="12" height="110" rx="6"/>
+                </g>
+                <!-- windows -->
+                <g fill="rgba(255,255,200,.2)">
+                  <rect x="170" y="115" width="14" height="18" rx="7"/><rect x="190" y="115" width="14" height="18" rx="7"/><rect x="210" y="115" width="14" height="18" rx="7"/>
+                  <rect x="170" y="145" width="14" height="18" rx="2"/><rect x="190" y="145" width="14" height="18" rx="2"/><rect x="210" y="145" width="14" height="18" rx="2"/>
+                </g>
+                <!-- door -->
+                <rect x="185" y="170" width="30" height="40" fill="#0a1928" rx="2" opacity=".9"/>
+                <!-- NUS text on pediment -->
+                <text x="200" y="88" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="Arial" opacity=".9">NUS</text>
+                <!-- trees -->
+                <rect x="30" y="155" width="7" height="55" fill="#1a5c3a"/><ellipse cx="34" cy="148" rx="24" ry="30" fill="#2e7d52"/>
+                <rect x="55" y="165" width="6" height="45" fill="#1a5c3a"/><ellipse cx="58" cy="159" rx="18" ry="22" fill="#388e60"/>
+                <rect x="340" y="155" width="7" height="55" fill="#1a5c3a"/><ellipse cx="344" cy="148" rx="24" ry="30" fill="#2e7d52"/>
+                <rect x="360" y="165" width="6" height="45" fill="#1a5c3a"/><ellipse cx="363" cy="159" rx="18" ry="22" fill="#388e60"/>
+                <!-- path -->
+                <path d="M150,210 Q200,195 250,210" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="6"/>
+                <!-- lawn -->
+                <ellipse cx="200" cy="215" rx="200" ry="12" fill="#1a5c3a" opacity=".4"/>
+                <defs>
+                  <linearGradient id="nusbody" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1a3a6b"/><stop offset="50%" stop-color="#2962a8"/><stop offset="100%" stop-color="#1a3a6b"/></linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <img class="collage-img" id="cimg-3" style="display:none" alt="NUS Singapore">
+            <div class="collage-caption"><span class="cc-flag">🇸🇬</span> National University of Singapore</div>
+            <div class="collage-overlay">📷 Ganti foto</div>
+          </div>
+
+          <!-- Slide 5: Students at Airport -->
+          <div class="collage-slot" data-slot="4" onclick="isAdmin && triggerPhotoUpload(4)">
+            <div class="cs-vis" style="background:linear-gradient(160deg,#1a1a2e 0%,#16213e 35%,#0f3460 65%,#1a5276 100%)">
+              <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+                <!-- airport terminal ceiling -->
+                <path d="M0,0 Q200,60 400,0 L400,80 Q200,120 0,80Z" fill="#1e3050" opacity=".8"/>
+                <!-- big windows top -->
+                <g fill="#4fc3f7" opacity=".12">
+                  <rect x="20" y="10" width="50" height="60" rx="3"/><rect x="80" y="10" width="50" height="60" rx="3"/>
+                  <rect x="140" y="10" width="50" height="60" rx="3"/><rect x="200" y="10" width="50" height="60" rx="3"/>
+                  <rect x="260" y="10" width="50" height="60" rx="3"/><rect x="320" y="10" width="50" height="60" rx="3"/>
+                </g>
+                <!-- floor -->
+                <rect x="0" y="160" width="400" height="60" fill="#0d1b2e" opacity=".7"/>
+                <!-- departure board -->
+                <rect x="130" y="25" width="140" height="40" fill="#0a0f1e" opacity=".9" rx="4"/>
+                <text x="200" y="42" text-anchor="middle" fill="#00e5ff" font-size="9" font-family="monospace" opacity=".9">✈ DEPARTURES</text>
+                <text x="200" y="57" text-anchor="middle" fill="#ffd54f" font-size="7.5" font-family="monospace">CGK → KUL → SIN</text>
+                <!-- plane in window -->
+                <text x="345" y="55" font-size="28" opacity=".55">✈</text>
+                <!-- luggage carts -->
+                <rect x="20" y="145" width="40" height="6" fill="#78909c" rx="2"/>
+                <rect x="22" y="125" width="14" height="22" fill="#546e7a" rx="2"/>
+                <rect x="38" y="120" width="14" height="27" fill="#607d8b" rx="2"/>
+                <circle cx="28" cy="152" r="4" fill="#37474f"/><circle cx="52" cy="152" r="4" fill="#37474f"/>
+                <!-- student group silhouettes -->
+                <!-- person 1 -->
+                <ellipse cx="120" cy="118" rx="10" ry="12" fill="#ffa726" opacity=".85"/>
+                <rect x="113" y="128" width="14" height="35" fill="#1565c0" rx="3"/>
+                <rect x="110" y="155" width="6" height="15" fill="#0d47a1" rx="2"/><rect x="118" y="155" width="6" height="15" fill="#0d47a1" rx="2"/>
+                <!-- person 2 -->
+                <ellipse cx="145" cy="115" rx="10" ry="12" fill="#ffcc80" opacity=".85"/>
+                <rect x="138" y="125" width="14" height="38" fill="#6a1b9a" rx="3"/>
+                <rect x="135" y="158" width="6" height="15" fill="#4a148c" rx="2"/><rect x="143" y="158" width="6" height="15" fill="#4a148c" rx="2"/>
+                <!-- person 3 (taller) -->
+                <ellipse cx="170" cy="110" rx="11" ry="13" fill="#e0a060" opacity=".85"/>
+                <rect x="162" y="121" width="16" height="42" fill="#1b5e20" rx="3"/>
+                <rect x="160" y="158" width="7" height="16" fill="#145214" rx="2"/><rect x="169" y="158" width="7" height="16" fill="#145214" rx="2"/>
+                <!-- person 4 -->
+                <ellipse cx="198" cy="115" rx="10" ry="12" fill="#ffa726" opacity=".85"/>
+                <rect x="191" y="125" width="14" height="38" fill="#b71c1c" rx="3"/>
+                <rect x="188" y="158" width="6" height="15" fill="#7f0000" rx="2"/><rect x="196" y="158" width="6" height="15" fill="#7f0000" rx="2"/>
+                <!-- person 5 -->
+                <ellipse cx="223" cy="113" rx="10" ry="12" fill="#ffcc80" opacity=".85"/>
+                <rect x="216" y="123" width="14" height="40" fill="#00695c" rx="3"/>
+                <rect x="213" y="158" width="6" height="16" fill="#004d40" rx="2"/><rect x="221" y="158" width="6" height="16" fill="#004d40" rx="2"/>
+                <!-- person 6 -->
+                <ellipse cx="248" cy="116" rx="10" ry="12" fill="#e0a060" opacity=".85"/>
+                <rect x="241" y="126" width="14" height="37" fill="#4527a0" rx="3"/>
+                <rect x="238" y="158" width="6" height="15" fill="#311b92" rx="2"/><rect x="246" y="158" width="6" height="15" fill="#311b92" rx="2"/>
+                <!-- person 7 -->
+                <ellipse cx="273" cy="115" rx="10" ry="12" fill="#ffa726" opacity=".85"/>
+                <rect x="266" y="125" width="14" height="38" fill="#01579b" rx="3"/>
+                <rect x="263" y="158" width="6" height="15" fill="#003c6b" rx="2"/><rect x="271" y="158" width="6" height="15" fill="#003c6b" rx="2"/>
+                <!-- luggage bags -->
+                <rect x="114" y="148" width="12" height="15" fill="#ff8f00" rx="2"/><rect x="138" y="150" width="12" height="13" fill="#7b1fa2" rx="2"/>
+                <rect x="163" y="152" width="13" height="12" fill="#2e7d32" rx="2"/><rect x="192" y="150" width="12" height="13" fill="#c62828" rx="2"/>
+                <rect x="217" y="149" width="12" height="14" fill="#006064" rx="2"/><rect x="242" y="150" width="12" height="13" fill="#4527a0" rx="2"/>
+                <rect x="267" y="148" width="12" height="15" fill="#0277bd" rx="2"/>
+                <!-- GlobaLearn banner -->
+                <rect x="90" y="90" width="220" height="22" fill="rgba(26,140,92,.85)" rx="4"/>
+                <text x="200" y="105" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="Arial">✈ GlobaLearn Journey 2026</text>
+                <!-- floor glow -->
+                <ellipse cx="200" cy="175" rx="160" ry="10" fill="#4fc3f7" opacity=".08"/>
+              </svg>
+            </div>
+            <img class="collage-img" id="cimg-4" style="display:none" alt="Students at Airport">
+            <div class="collage-caption">✈️ Delegasi GlobaLearn Journey · Keberangkatan</div>
+            <div class="collage-overlay">📷 Ganti foto</div>
+          </div>
+
+        </div>
+        <div class="collage-dots" id="collageDots">
+          <span class="cdot active" onclick="scrollCollage(0)"></span>
+          <span class="cdot" onclick="scrollCollage(1)"></span>
+          <span class="cdot" onclick="scrollCollage(2)"></span>
+          <span class="cdot" onclick="scrollCollage(3)"></span>
+          <span class="cdot" onclick="scrollCollage(4)"></span>
+        </div>
+      </div>
+    </div>
+    <input type="file" id="collageInput" accept="image/*" style="display:none">
+
+
+    <!-- Menu Navigasi -->
+    <div class="menu-section">
+      <div class="menu-title">Jelajahi Program</div>
+      <div class="menu-grid">
+        <div class="mcard" onclick="goPanel('about')">
+          <div class="mcard-ico">📖</div>
+          <div class="mcard-ttl">Tentang Program</div>
+          <div class="mcard-sub">Visi, misi, konsep & tujuan</div>
+          <span class="mcard-tag tag-g">Program</span>
+        </div>
+        <div class="mcard" onclick="goPanel('highlights')">
+          <div class="mcard-ico">⭐</div>
+          <div class="mcard-ttl">Highlight Kegiatan</div>
+          <div class="mcard-sub">Campus visit, KBRI, City Trip</div>
+          <span class="mcard-tag tag-g">Program</span>
+        </div>
+        <div class="mcard" onclick="goPanel('itinerary')">
+          <div class="mcard-ico">🗓️</div>
+          <div class="mcard-ttl">Itinerary</div>
+          <div class="mcard-sub">Jadwal 6 hari kegiatan</div>
+          <span class="mcard-tag tag-b">Jadwal</span>
+        </div>
+        <div class="mcard" onclick="goPanel('guide')">
+          <div class="mcard-ico">📋</div>
+          <div class="mcard-ttl">Panduan Kegiatan</div>
+          <div class="mcard-sub">Persiapan, etika & protokol</div>
+          <span class="mcard-tag tag-b">Panduan</span>
+        </div>
+        <div class="mcard" onclick="goPanel('mentoring')">
+          <div class="mcard-ico">🎓</div>
+          <div class="mcard-ttl">Mentoring & Penugasan</div>
+          <div class="mcard-sub">3 fase program mentoring</div>
+          <span class="mcard-tag tag-g">Program</span>
+        </div>
+        <div class="mcard" onclick="goPanel('benefit')">
+          <div class="mcard-ico">🎁</div>
+          <div class="mcard-ttl">Benefit Peserta</div>
+          <div class="mcard-sub">Sertifikat, portofolio, network</div>
+          <span class="mcard-tag tag-a">Benefit</span>
+        </div>
+        <div class="mcard" onclick="goPanel('registration')">
+          <div class="mcard-ico">🎟️</div>
+          <div class="mcard-ttl">Jalur Pendaftaran</div>
+          <div class="mcard-sub">Fully, Partial & Self Funded</div>
+          <span class="mcard-tag tag-a">Daftar</span>
+        </div>
+        <div class="mcard" onclick="goPanel('timeline')">
+          <div class="mcard-ico">⏱️</div>
+          <div class="mcard-ttl">Timeline Seleksi</div>
+          <div class="mcard-sub">Sept 2025 → Feb 2026</div>
+          <span class="mcard-tag tag-a">Daftar</span>
+        </div>
+        <div class="mcard" onclick="goPanel('faq')">
+          <div class="mcard-ico">❓</div>
+          <div class="mcard-ttl">FAQ</div>
+          <div class="mcard-sub">Pertanyaan yang sering ditanya</div>
+          <span class="mcard-tag tag-r">Bantuan</span>
+        </div>
+        <div class="mcard" onclick="goPanel('contact')">
+          <div class="mcard-ico">📬</div>
+          <div class="mcard-ttl">Kontak & Daftar</div>
+          <div class="mcard-sub">Hubungi kami langsung</div>
+          <span class="mcard-tag tag-r">Bantuan</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /panel-home -->
+
+  <!-- ══════════════════════════
+       KOLASE FOTO (hidden nav, panel sendiri)
+  ══════════════════════════ -->
+  <div class="panel" id="panel-collage">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Kolase Foto</div><span class="back-path">Beranda → Kolase Foto</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">📸 Galeri</div><div class="ptitle" contenteditable="false">Galeri Foto Program</div><p class="plead" contenteditable="false">Dokumentasi kegiatan GlobaLearn Journey — momen berharga dari campus visit, KBRI, city trip, hingga cultural performances.</p></div>
+      <div class="collage-full-grid" id="collageFullGrid">
+        <div class="cfg-slot" data-slot="0" onclick="isAdmin && triggerPhotoUpload(0)">
+          <div class="collage-empty"><span>🌏</span><span class="collage-hint">Foto 1</span></div>
+          <img class="cfg-img" id="cfimg-0" style="display:none">
+          <div class="collage-overlay">📷 Ganti foto</div>
+        </div>
+        <div class="cfg-slot" data-slot="1" onclick="isAdmin && triggerPhotoUpload(1)">
+          <div class="collage-empty"><span>🌏</span><span class="collage-hint">Foto 2</span></div>
+          <img class="cfg-img" id="cfimg-1" style="display:none">
+          <div class="collage-overlay">📷 Ganti foto</div>
+        </div>
+        <div class="cfg-slot" data-slot="2" onclick="isAdmin && triggerPhotoUpload(2)">
+          <div class="collage-empty"><span>🌏</span><span class="collage-hint">Foto 3</span></div>
+          <img class="cfg-img" id="cfimg-2" style="display:none">
+          <div class="collage-overlay">📷 Ganti foto</div>
+        </div>
+        <div class="cfg-slot" data-slot="3" onclick="isAdmin && triggerPhotoUpload(3)">
+          <div class="collage-empty"><span>🌏</span><span class="collage-hint">Foto 4</span></div>
+          <img class="cfg-img" id="cfimg-3" style="display:none">
+          <div class="collage-overlay">📷 Ganti foto</div>
+        </div>
+        <div class="cfg-slot" data-slot="4" onclick="isAdmin && triggerPhotoUpload(4)">
+          <div class="collage-empty"><span>🌏</span><span class="collage-hint">Foto 5</span></div>
+          <img class="cfg-img" id="cfimg-4" style="display:none">
+          <div class="collage-overlay">📷 Ganti foto</div>
+        </div>
+      </div>
+      <div class="collage-admin-note" id="collageAdminNote" style="display:none">
+        💡 Mode Admin aktif — klik slot mana pun untuk upload foto
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       KATA PENGANTAR
+  ══════════════════════════ -->
+  <div class="panel" id="panel-kata">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Kata Pengantar</div><span class="back-path">Beranda → Kata Pengantar</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">📝 Pengantar</div><div class="ptitle" contenteditable="false">Kata Pengantar</div></div>
+
+      <!-- KATA PENGANTAR LAYOUT -->
+      <div class="kata-layout">
+        <div class="kata-text-col">
+          <div class="kata-greeting" contenteditable="false">Halo! Salam sejahtera bagi kita semua,</div>
+          <div class="kata-welcome" contenteditable="false">Selamat datang di GlobaLearn Journey!</div>
+          <p class="kata-body" contenteditable="false">Kami percaya bahwa mengenal dunia dimulai dari mengenal sudut pandang orang lain serta menjadi pribadi yang menyerapnya sebagai pengalaman berharga. Program ini kami rancang sebagai jembatan untuk para generasi muda Indonesia agar dapat merasakan atmosfer dunia pendidikan di luar negeri, membangun wawasan global, mengenal budaya lebih dalam, serta memperluas relasi internasional.</p>
+          <p class="kata-body" contenteditable="false">Semoga perjalanan ini bukan hanya menjadi pengalaman tak terlupakan, tapi juga menjadi batu loncatan menuju mimpi besar kalian. Mari bereksplorasi, bertumbuh, dan bersinar bersama!</p>
+          <div class="kata-sign">
+            <div class="kata-sign-line"></div>
+            <div class="kata-sign-warm" contenteditable="false">Salam hangat,</div>
+            <div class="kata-sign-name" contenteditable="false">Rama</div>
+            <div class="kata-sign-role" contenteditable="false">Executive Director · GlobaLearn Journey</div>
+          </div>
+        </div>
+        <div class="kata-quote-col">
+          <div class="kata-quote-box">
+            <div class="kata-quote-mark">"</div>
+            <div class="kata-quote-text" contenteditable="false">Mengenal dunia dimulai dari mengenal sudut pandang orang lain.</div>
+            <div class="kata-quote-attr" contenteditable="false">— Rama, Executive Director</div>
+          </div>
+          <div class="kata-info-box">
+            <div class="kata-info-row"><span class="kata-info-ico">🌏</span><div><span class="kata-info-lbl">Tujuan</span><span class="kata-info-val" contenteditable="false">Malaysia & Singapura</span></div></div>
+            <div class="kata-info-row"><span class="kata-info-ico">📅</span><div><span class="kata-info-lbl">Keberangkatan</span><span class="kata-info-val" contenteditable="false">5–8 Februari 2026</span></div></div>
+            <div class="kata-info-row"><span class="kata-info-ico">👥</span><div><span class="kata-info-lbl">Kuota</span><span class="kata-info-val" contenteditable="false">40 Peserta Terbaik</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       TENTANG PROGRAM
+  ══════════════════════════ -->
+  <div class="panel" id="panel-about">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Tentang Program</div><span class="back-path">Beranda → Tentang Program</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">📖 Tentang</div><div class="ptitle" contenteditable="false">Apa itu GlobaLearn Journey?</div><p class="plead" contenteditable="false">Program inovatif yang dikemas secara unik dengan mengombinasikan pendidikan, pengembangan keterampilan (soft skills & hard skills), serta pengalaman perjalanan yang inspiratif. Terbuka untuk pelajar, mahasiswa, guru, dan profesional muda Indonesia.</p></div>
+
+      <div class="slbl">Konsep Kegiatan</div>
+      <div class="card" style="padding:14px">
+        <p style="font-size:.8rem;color:var(--txt2);line-height:1.7" contenteditable="false">GlobaLearn Journey merupakan program <em>international experiential learning</em> yang menggabungkan <strong>pendidikan, diplomasi budaya, pengembangan kepemimpinan, dan eksplorasi global</strong>. Kegiatan ini dirancang dalam bentuk kunjungan edukatif, seminar inspiratif, interaksi antarbudaya, serta eksplorasi tempat bersejarah dan institusi di negara tujuan.</p>
+      </div>
+
+      <div class="slbl">Tema Program</div>
+      <div class="card" style="padding:14px;border-left:4px solid var(--g)">
+        <div style="font-size:.82rem;font-weight:800;color:var(--g);margin-bottom:5px" contenteditable="false">"Empowering Global Youth Leaders: Learn, Lead, and Connect"</div>
+        <p style="font-size:.78rem;color:var(--txt2);line-height:1.65" contenteditable="false">Tema ini menekankan pada penguatan kapasitas pemuda melalui pembelajaran lintas negara, kepemimpinan kolaboratif, serta jaringan internasional.</p>
+      </div>
+
+      <div class="slbl">Keberangkatan</div>
+      <div class="g3" style="gap:9px">
+        <div class="card" style="padding:12px;text-align:center"><div style="font-size:1.4rem;margin-bottom:5px">🌏</div><div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--txt3);margin-bottom:3px">Negara Tujuan</div><div style="font-size:.85rem;font-weight:800;color:var(--txt)" contenteditable="false">Malaysia & Singapura</div></div>
+        <div class="card" style="padding:12px;text-align:center"><div style="font-size:1.4rem;margin-bottom:5px">📅</div><div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--txt3);margin-bottom:3px">Tanggal</div><div style="font-size:.85rem;font-weight:800;color:var(--txt)" contenteditable="false">5–8 Februari 2026</div></div>
+        <div class="card" style="padding:12px;text-align:center"><div style="font-size:1.4rem;margin-bottom:5px">⏱️</div><div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--txt3);margin-bottom:3px">Durasi</div><div style="font-size:.85rem;font-weight:800;color:var(--txt)" contenteditable="false">4 Hari Program</div></div>
+      </div>
+
+      <div class="slbl">Visi & Misi</div>
+      <div class="g2">
+        <div class="card"><div class="vm"><h3>🎯 Visi</h3><p contenteditable="false">Membangun ekosistem pemuda Indonesia yang aktif, inspiratif, dan kolaboratif dalam memajukan dunia melalui pendidikan, budaya, dan kepemimpinan.</p></div></div>
+        <div class="card"><div class="vm"><h3>🚀 Misi</h3><ul>
+          <li><span contenteditable="false">Menyelenggarakan program pertukaran edukatif dan budaya</span></li>
+          <li><span contenteditable="false">Mendorong pengembangan kepemimpinan dan ruang kontribusi pemuda</span></li>
+          <li><span contenteditable="false">Membentuk komunitas pemuda global yang kolaboratif</span></li>
+          <li><span contenteditable="false">Menumbuhkan kesadaran multikultural dan diplomasi antarbangsa</span></li>
+        </ul></div></div>
+      </div>
+
+      <div class="slbl">Tujuan Program</div>
+      <div class="card">
+        <div class="grow"><span class="gi">🌐</span><span class="gt2" contenteditable="false"><strong>Wawasan Global</strong> — Membekali peserta dengan wawasan global dan keterampilan yang dibutuhkan dalam dunia kerja dan pendidikan tinggi.</span></div>
+        <div class="grow"><span class="gi">🎓</span><span class="gt2" contenteditable="false"><strong>Experiential Learning</strong> — Memberikan pengalaman edukasi yang menyenangkan, aplikatif, dan relevan melalui metode experiential learning.</span></div>
+        <div class="grow"><span class="gi">🤝</span><span class="gt2" contenteditable="false"><strong>Kemitraan Internasional</strong> — Menjalin kemitraan dengan lembaga pendidikan, komunitas, dan institusi internasional untuk memperluas jaringan pembelajaran.</span></div>
+      </div>
+
+      <div class="slbl">Persyaratan Peserta</div>
+      <div class="g2">
+        <div class="card" style="padding:12px">
+          <div class="ri"><span>✅</span><span contenteditable="false">Warga Negara Indonesia usia <strong>15–30 tahun</strong></span></div>
+          <div class="ri"><span>✅</span><span contenteditable="false">Sehat jasmani dan rohani</span></div>
+          <div class="ri"><span>✅</span><span contenteditable="false">Terbuka untuk pelajar, mahasiswa, guru, atau profesional muda</span></div>
+          <div class="ri"><span>✅</span><span contenteditable="false">Memiliki paspor aktif minimal <strong>6 bulan</strong></span></div>
+        </div>
+        <div class="card" style="padding:12px">
+          <div class="ri"><span>✅</span><span contenteditable="false">Mengisi formulir pendaftaran dan esai motivasi</span></div>
+          <div class="ri"><span>✅</span><span contenteditable="false">Bersedia mengikuti seluruh rangkaian program</span></div>
+          <div class="ri"><span>✅</span><span contenteditable="false">Dapat mengikuti program secara mandiri atau bersponsor</span></div>
+        </div>
+      </div>
+
+      <div class="slbl">Manfaat Program</div>
+      <div class="g2" style="align-items:start">
+        <div>
+          <p style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--txt3);margin-bottom:7px">Untuk Peserta</p>
+          <div class="col" style="gap:8px">
+            <div class="card"><div class="bc"><span class="bc-i">💼</span><div class="bc-t" contenteditable="false">Pelatihan Keterampilan</div><div class="bc-d" contenteditable="false">Pelatihan yang mendukung perkembangan karier dan studi lanjut</div></div></div>
+            <div class="card"><div class="bc"><span class="bc-i">💬</span><div class="bc-t" contenteditable="false">Cross-cultural Communication</div><div class="bc-d" contenteditable="false">Meningkatkan kepercayaan diri dan kemampuan komunikasi lintas budaya</div></div></div>
+            <div class="card"><div class="bc"><span class="bc-i">🌐</span><div class="bc-t" contenteditable="false">Wawasan Global</div><div class="bc-d" contenteditable="false">Mengenal sistem pendidikan dan budaya di negara lain secara langsung</div></div></div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--txt3);margin-bottom:7px">Untuk Instansi</p>
+          <div class="col" style="gap:8px">
+            <div class="card"><div class="bc"><span class="bc-i">🏆</span><div class="bc-t" contenteditable="false">Reputasi Internasional</div><div class="bc-d" contenteditable="false">Meningkatkan reputasi dan jaringan kerja sama internasional</div></div></div>
+            <div class="card"><div class="bc"><span class="bc-i">🌍</span><div class="bc-t" contenteditable="false">Kolaborasi Lintas Negara</div><div class="bc-d" contenteditable="false">Mendorong kolaborasi pendidikan lintas negara</div></div></div>
+            <div class="card"><div class="bc"><span class="bc-i">⭐</span><div class="bc-t" contenteditable="false">Alumni Unggul</div><div class="bc-d" contenteditable="false">Menciptakan alumni siap jadi agen perubahan global</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       HIGHLIGHT
+  ══════════════════════════ -->
+  <div class="panel" id="panel-highlights">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Highlight Kegiatan</div><span class="back-path">Beranda → Highlight</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">⭐ Highlight</div><div class="ptitle" contenteditable="false">Program Highlights</div><p class="plead" contenteditable="false">Kegiatan dirancang untuk memberikan pengalaman terbaik dalam eksplorasi budaya, akademik, dan kepemimpinan internasional.</p></div>
+      <div class="slbl">Main Agenda</div>
+      <div class="g4">
+        <div class="ac ac-g"><span class="ac-emo">🏫</span><div class="ac-ttl" contenteditable="false">Campus Visit</div><div class="ac-txt" contenteditable="false">Kunjungan ke universitas terkemuka menjadi main agenda program. Peserta dapat memahami budaya akademik serta adanya forum terbuka dengan kampus tujuan.</div></div>
+        <div class="ac ac-a"><span class="ac-emo">🏛️</span><div class="ac-ttl" contenteditable="false">KBRI Visit</div><div class="ac-txt" contenteditable="false">Diskusi interaktif membuka wawasan peserta mengenai tantangan dan peluang dalam dunia diplomasi, sekaligus memotivasi untuk berkontribusi di bidang tersebut.</div></div>
+        <div class="ac ac-b"><span class="ac-emo">🗺️</span><div class="ac-ttl" contenteditable="false">City Trip</div><div class="ac-txt" contenteditable="false">Eksplorasi budaya dan kunjungan tempat bersejarah. Peserta dapat merasakan keragaman yang memperkaya pengalaman secara keseluruhan.</div></div>
+        <div class="ac ac-r"><span class="ac-emo">🎭</span><div class="ac-ttl" contenteditable="false">Cultural Performances</div><div class="ac-txt" contenteditable="false">Penampilan bakat kelompok dengan tema kebudayaan bertujuan mempererat kekompakan dan melestarikan budaya Indonesia.</div></div>
+      </div>
+      <div class="slbl">Build Relationships</div>
+      <div class="li2"><span class="li-ico">💬</span><div><div class="li-t" contenteditable="false">Forum Group Discussion</div><div class="li-d" contenteditable="false">Diskusi kelompok seputar karier dan peluang masa depan</div></div></div>
+      <div class="li2"><span class="li-ico">🎙️</span><div><div class="li-t" contenteditable="false">Talkshow</div><div class="li-d" contenteditable="false">Sharing session inspiratif dengan diaspora dan pemimpin muda Indonesia di luar negeri</div></div></div>
+      <div class="li2"><span class="li-ico">🏆</span><div><div class="li-t" contenteditable="false">Awarding Session</div><div class="li-d" contenteditable="false">Penghargaan bagi delegasi paling aktif, inspiratif, dan berkontribusi selama program</div></div></div>
+      <div class="li2"><span class="li-ico">🎁</span><div><div class="li-t" contenteditable="false">Gift Exchange</div><div class="li-d" contenteditable="false">Tukar hadiah budaya antar peserta lintas negara dari berbagai kota dan latar belakang</div></div></div>
+      <div class="li2"><span class="li-ico">🎤</span><div><div class="li-t" contenteditable="false">Entertainment</div><div class="li-d" contenteditable="false">Penampilan bakat kelompok merayakan kreativitas dan ekspresi budaya peserta</div></div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       ITINERARY
+  ══════════════════════════ -->
+  <div class="panel" id="panel-itinerary">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Itinerary</div><span class="back-path">Beranda → Itinerary</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">🗓️ Jadwal</div><div class="ptitle" contenteditable="false">Itinerary Program</div><p class="plead" contenteditable="false">Perjalanan 6 hari yang padat dan bermakna, dari keberangkatan Jakarta hingga kepulangan penuh pengalaman berharga.</p></div>
+      <div class="itl">
+        <div class="itr"><div class="itd">D1</div><div class="itb"><span class="it-tag">5 Feb 2026 · Hari 1</span><div class="it-ttl" contenteditable="false">Jakarta → Negara Tujuan</div><div class="it-d" contenteditable="false">Keberangkatan dari Jakarta, transit, dan orientasi program. Peserta berkumpul, check-in hotel, dan mendapatkan briefing lengkap dari panitia dan mentor pendamping.</div></div></div>
+        <div class="itr"><div class="itd">D2</div><div class="itb"><span class="it-tag">Hari 2</span><div class="it-ttl" contenteditable="false">Campus Visit 1 + FGD</div><div class="it-d" contenteditable="false">Kunjungan ke universitas pertama disertai Forum Group Discussion bersama pihak kampus. Peserta berinteraksi langsung dengan civitas akademika dalam open forum.</div></div></div>
+        <div class="itr"><div class="itd">D3</div><div class="itb"><span class="it-tag">Hari 3</span><div class="it-ttl" contenteditable="false">City Trip + KBRI Visit + Bonding Activity</div><div class="it-d" contenteditable="false">Kunjungan ke tempat bersejarah, eksplorasi kota, KBRI Visit, dan bonding activity bersama seluruh peserta untuk pengenalan mendalam tentang budaya lokal.</div></div></div>
+        <div class="itr"><div class="itd">D4</div><div class="itb"><span class="it-tag">Hari 4</span><div class="it-ttl" contenteditable="false">Campus Visit 2 + Sharing Session</div><div class="it-d" contenteditable="false">Kunjungan ke universitas kedua dilanjutkan sharing session inspiratif bersama tokoh diaspora dan pemimpin muda tentang peluang pendidikan dan karir global.</div></div></div>
+        <div class="itr"><div class="itd">D5</div><div class="itb"><span class="it-tag">Hari 5</span><div class="it-ttl" contenteditable="false">FGD · Awarding · Cultural Performances</div><div class="it-d" contenteditable="false">Sesi penutup berisi FGD final, Awarding Session untuk delegasi terbaik, dan penampilan budaya kelompok sebagai puncak ekspresi kreativitas peserta.</div></div></div>
+        <div class="itr"><div class="itd">🏠</div><div class="itb"><span class="it-tag" style="background:var(--ambl);color:#b45309">8 Feb 2026 · Hari 6</span><div class="it-ttl" contenteditable="false">Kembali ke Indonesia 🎉</div><div class="it-d" contenteditable="false">Kepulangan ke Indonesia dengan segudang pengalaman baru, koneksi internasional, sertifikat resmi, dan semangat baru untuk berkontribusi bagi bangsa.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       PANDUAN KEGIATAN
+  ══════════════════════════ -->
+  <div class="panel" id="panel-guide">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Panduan Kegiatan</div><span class="back-path">Beranda → Panduan Kegiatan</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">📋 Panduan</div><div class="ptitle" contenteditable="false">Persiapan & Protokol</div><p class="plead" contenteditable="false">Panduan lengkap untuk memastikan perjalanan yang aman, nyaman, dan berkesan bagi seluruh peserta program.</p></div>
+      <div class="g3">
+        <div class="card" style="overflow:hidden"><div class="gh"><div class="gh-ico">🧳</div><div class="gh-t">Perlengkapan Wajib</div></div><div class="gb"><ul class="glist">
+          <li><span contenteditable="false">Paspor & tiket pesawat</span></li>
+          <li><span contenteditable="false">Buku catatan & alat tulis</span></li>
+          <li><span contenteditable="false">Pakaian sopan sesuai cuaca negara tujuan</span></li>
+          <li><span contenteditable="false">Powerbank & adaptor universal</span></li>
+          <li><span contenteditable="false">Obat-obatan pribadi</span></li>
+        </ul></div></div>
+        <div class="card" style="overflow:hidden"><div class="gh"><div class="gh-ico">🎓</div><div class="gh-t">Etika Selama Kunjungan</div></div><div class="gb"><ul class="glist">
+          <li><span contenteditable="false">Menjaga sopan santun dan menghormati kebudayaan negara tujuan</span></li>
+          <li><span contenteditable="false">Aktif dan antusias dalam setiap sesi</span></li>
+          <li><span contenteditable="false">Jaga nama baik Indonesia dan instansi pengirim</span></li>
+          <li><span contenteditable="false">Tepat waktu di setiap agenda</span></li>
+        </ul></div></div>
+        <div class="card" style="overflow:hidden"><div class="gh"><div class="gh-ico">🛡️</div><div class="gh-t">Keamanan & Protokol</div></div><div class="gb"><ul class="glist">
+          <li><span contenteditable="false">Ikuti arahan mentor dan panitia</span></li>
+          <li><span contenteditable="false">Jangan keluar rombongan tanpa izin</span></li>
+          <li><span contenteditable="false">Wajib lapor saat kondisi darurat</span></li>
+          <li><span contenteditable="false">Simpan kontak darurat panitia</span></li>
+        </ul></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       MENTORING & PENUGASAN
+  ══════════════════════════ -->
+  <div class="panel" id="panel-mentoring">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Mentoring & Penugasan</div><span class="back-path">Beranda → Mentoring</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">🎓 Mentoring</div><div class="ptitle" contenteditable="false">Mentoring & Penugasan</div><p class="plead" contenteditable="false">Program mentoring dirancang dalam 3 fase untuk mempersiapkan, mendampingi, dan menindaklanjuti pengalaman peserta secara menyeluruh.</p></div>
+
+      <div class="phase-card">
+        <div class="phase-h"><div class="phase-num">01</div><div><div class="phase-ttl" contenteditable="false">Fase Pra-Keberangkatan</div><div class="phase-sub" contenteditable="false">Persiapan sebelum program dimulai</div></div></div>
+        <div class="phase-b">
+          <div class="phase-item"><span contenteditable="false">Orientasi program dan perkenalan peserta</span></div>
+          <div class="phase-item"><span contenteditable="false">Pembekalan budaya dan etika di negara tujuan</span></div>
+          <div class="phase-item"><span contenteditable="false">Penugasan esai pra-keberangkatan tentang ekspektasi program</span></div>
+          <div class="phase-item"><span contenteditable="false">Sesi latihan presentasi dan public speaking</span></div>
+          <div class="phase-item"><span contenteditable="false">Pembagian kelompok dan role assignment delegasi</span></div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-h" style="background:var(--gt)"><div class="phase-num">02</div><div><div class="phase-ttl" contenteditable="false">Fase Selama Program</div><div class="phase-sub" contenteditable="false">Pendampingan intensif di lapangan</div></div></div>
+        <div class="phase-b">
+          <div class="phase-item"><span contenteditable="false">Daily reflection — jurnal harian pengalaman peserta</span></div>
+          <div class="phase-item"><span contenteditable="false">Mentoring sesi oleh mentor lokal berpengalaman</span></div>
+          <div class="phase-item"><span contenteditable="false">Tugas dokumentasi kegiatan dan portofolio digital</span></div>
+          <div class="phase-item"><span contenteditable="false">Group project — rancangan program kolaboratif lintas budaya</span></div>
+          <div class="phase-item"><span contenteditable="false">Presentasi hasil kunjungan di sesi FGD penutup</span></div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-h" style="background:#f59e0b"><div class="phase-num">03</div><div><div class="phase-ttl" contenteditable="false">Fase Pasca-Program</div><div class="phase-sub" contenteditable="false">Tindak lanjut dan pengembangan alumni</div></div></div>
+        <div class="phase-b">
+          <div class="phase-item"><span contenteditable="false">Penyelesaian portofolio digital dan sertifikasi</span></div>
+          <div class="phase-item"><span contenteditable="false">Laporan refleksi akhir — pembelajaran dan dampak personal</span></div>
+          <div class="phase-item"><span contenteditable="false">Sesi sharing alumni untuk batch berikutnya</span></div>
+          <div class="phase-item"><span contenteditable="false">Bergabung ke komunitas alumni GlobaLearn Journey</span></div>
+          <div class="phase-item"><span contenteditable="false">Peluang menjadi mentor/relawan batch selanjutnya</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       BENEFIT PESERTA
+  ══════════════════════════ -->
+  <div class="panel" id="panel-benefit">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Benefit Peserta</div><span class="back-path">Beranda → Benefit Peserta</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">🎁 Benefit</div><div class="ptitle" contenteditable="false">Benefit Peserta</div><p class="plead" contenteditable="false">Semua jalur pendaftaran mendapatkan hak dan fasilitas program yang sama. Berikut benefit yang akan kamu dapatkan:</p></div>
+      <div class="bp-grid">
+        <div class="bp-item"><div class="bp-ico">📜</div><div class="bp-t" contenteditable="false">Sertifikat Internasional</div><div class="bp-d" contenteditable="false">Sertifikat dalam bahasa Inggris yang diakui secara internasional</div></div>
+        <div class="bp-item"><div class="bp-ico">📸</div><div class="bp-t" contenteditable="false">Portofolio Digital</div><div class="bp-d" contenteditable="false">Dokumentasi lengkap seluruh kegiatan program</div></div>
+        <div class="bp-item"><div class="bp-ico">🌐</div><div class="bp-t" contenteditable="false">Relasi Internasional</div><div class="bp-d" contenteditable="false">Jaringan relasi nasional dan internasional yang luas</div></div>
+        <div class="bp-item"><div class="bp-ico">⚡</div><div class="bp-t" contenteditable="false">Prioritas Batch Berikutnya</div><div class="bp-d" contenteditable="false">Akses prioritas untuk bergabung di batch selanjutnya</div></div>
+        <div class="bp-item"><div class="bp-ico">👥</div><div class="bp-t" contenteditable="false">Komunitas Alumni</div><div class="bp-d" contenteditable="false">Akses eksklusif ke komunitas alumni GlobaLearn Journey</div></div>
+        <div class="bp-item"><div class="bp-ico">🎓</div><div class="bp-t" contenteditable="false">Mentoring Program</div><div class="bp-d" contenteditable="false">Didampingi mentor berpengalaman selama 3 fase program</div></div>
+        <div class="bp-item"><div class="bp-ico">🏆</div><div class="bp-t" contenteditable="false">Awarding & Penghargaan</div><div class="bp-d" contenteditable="false">Penghargaan bagi delegasi paling aktif dan inspiratif</div></div>
+        <div class="bp-item"><div class="bp-ico">🤝</div><div class="bp-t" contenteditable="false">Peluang Relawan</div><div class="bp-d" contenteditable="false">Kesempatan menjadi relawan atau mentor batch berikutnya</div></div>
+        <div class="bp-item"><div class="bp-ico">📢</div><div class="bp-t" contenteditable="false">Exposure & Publikasi</div><div class="bp-d" contenteditable="false">Dokumentasi dan publikasi di media sosial GlobaLearn</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       JALUR PENDAFTARAN
+  ══════════════════════════ -->
+  <div class="panel" id="panel-registration">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Jalur Pendaftaran</div><span class="back-path">Beranda → Jalur Pendaftaran</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">🎟️ Pendaftaran</div><div class="ptitle" contenteditable="false">Pilih Jalurmu</div><p class="plead" contenteditable="false">Tiga jalur tersedia dengan fasilitas program yang setara. Pilih yang paling sesuai dengan kondisimu.</p></div>
+      <div class="g3">
+        <div class="rcard card"><div class="rh gr"><div class="rn">01</div><div class="rname" contenteditable="false">Fully Funded</div><div class="rbadge">🏆 Kompetitif</div></div><div class="rb">
+          <div class="rl">💰 Biaya ditanggung <strong contenteditable="false">100%</strong> oleh penyelenggara</div>
+          <div class="rl">📋 <span contenteditable="false">Seleksi ketat berbasis esai, prestasi & wawancara</span></div>
+        </div></div>
+        <div class="rcard card ft"><div class="rh te"><div class="rn">02</div><div class="rname" contenteditable="false">Partial Funded</div><div class="rbadge">⭐ Populer</div></div><div class="rb">
+          <div class="rl">💰 Diskon biaya hingga <strong contenteditable="false">50%</strong></div>
+          <div class="rl">📋 <span contenteditable="false">Seleksi ketat berbasis esai, prestasi & wawancara</span></div>
+        </div></div>
+        <div class="rcard card"><div class="rh sl"><div class="rn">03</div><div class="rname" contenteditable="false">Self Funded</div><div class="rbadge">✅ Terbuka</div></div><div class="rb">
+          <div class="rl">💰 Biaya ditanggung <strong contenteditable="false">penuh</strong> oleh peserta</div>
+          <div class="rl">📋 <span contenteditable="false">Seleksi berbasis esai motivasi</span></div>
+        </div></div>
+      </div>
+      <div class="slbl">Benefit Semua Jalur</div>
+      <div class="bgi">
+        <div class="bi"><div class="bi-ic">📜</div><div><div class="bi-t" contenteditable="false">Sertifikat Internasional</div><div class="bi-d" contenteditable="false">Bahasa Inggris</div></div></div>
+        <div class="bi"><div class="bi-ic">📸</div><div><div class="bi-t" contenteditable="false">Portofolio Digital</div><div class="bi-d" contenteditable="false">Dokumentasi lengkap</div></div></div>
+        <div class="bi"><div class="bi-ic">🌐</div><div><div class="bi-t" contenteditable="false">Relasi Internasional</div><div class="bi-d" contenteditable="false">Nasional & internasional</div></div></div>
+        <div class="bi"><div class="bi-ic">⚡</div><div><div class="bi-t" contenteditable="false">Prioritas Batch Berikutnya</div><div class="bi-d" contenteditable="false">Akses prioritas</div></div></div>
+        <div class="bi"><div class="bi-ic">👥</div><div><div class="bi-t" contenteditable="false">Komunitas Alumni</div><div class="bi-d" contenteditable="false">Akses eksklusif alumni</div></div></div>
+        <div class="bi"><div class="bi-ic">🎓</div><div><div class="bi-t" contenteditable="false">Fasilitas Setara</div><div class="bi-d" contenteditable="false">Semua jalur hak sama</div></div></div>
+      </div>
+      <div style="margin-top:16px">
+        <a href="https://bit.ly/DaftarGlobaLearn" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:var(--g);color:#fff;font-weight:800;font-size:.8rem;padding:10px 20px;border-radius:8px;text-decoration:none;box-shadow:0 3px 10px rgba(26,140,92,.28)">🚀 Daftar di bit.ly/DaftarGlobaLearn</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       TIMELINE SELEKSI
+  ══════════════════════════ -->
+  <div class="panel" id="panel-timeline">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Timeline Seleksi</div><span class="back-path">Beranda → Timeline Seleksi</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">⏱️ Timeline</div><div class="ptitle" contenteditable="false">Alur Pendaftaran</div><p class="plead" contenteditable="false">Pastikan kamu sudah memenuhi semua syarat pendaftaran dan mempersiapkan dokumen-dokumen yang diperlukan. Selamat berjuang!</p></div>
+      <div class="sw">
+        <div class="sh"><h3 contenteditable="false">🗓️ Alur Seleksi Batch 1</h3><p contenteditable="false">Sept 2025 — Feb 2026</p></div>
+        <div class="sb">
+          <div class="ss"><div class="s-bull">📝</div><div class="sc"><span class="sd" contenteditable="false">15 September 2025</span><div class="se" contenteditable="false">Pembukaan Pendaftaran</div><div class="sn" contenteditable="false">Formulir online dibuka. Mulai isi dan kirimkan esai motivasimu.</div></div></div>
+          <div class="ss"><div class="s-bull">⏰</div><div class="sc"><span class="sd" contenteditable="false">15 November 2025</span><div class="se" contenteditable="false">Deadline Pendaftaran</div><div class="sn" contenteditable="false">Batas akhir pengiriman formulir dan dokumen persyaratan.</div></div></div>
+          <div class="ss"><div class="s-bull">🔍</div><div class="sc"><span class="sd" contenteditable="false">16 November 2025</span><div class="se" contenteditable="false">Seleksi Administrasi</div><div class="sn" contenteditable="false">Tim seleksi memeriksa kelengkapan dan kesesuaian dokumen.</div></div></div>
+          <div class="ss"><div class="s-bull">📢</div><div class="sc"><span class="sd" contenteditable="false">20 November 2025</span><div class="se" contenteditable="false">Pengumuman Administrasi</div><div class="sn" contenteditable="false">Hasil seleksi dokumen diumumkan kepada peserta.</div></div></div>
+          <div class="ss"><div class="s-bull">✍️</div><div class="sc"><span class="sd" contenteditable="false">25 November 2025</span><div class="se" contenteditable="false">Test Esai</div><div class="sn" contenteditable="false">Peserta lolos administrasi mengerjakan test esai online.</div></div></div>
+          <div class="ss"><div class="s-bull">⚖️</div><div class="sc"><span class="sd" contenteditable="false">1 Desember 2025</span><div class="se" contenteditable="false">Seleksi Esai</div><div class="sn" contenteditable="false">Tim juri menilai esai berdasarkan kriteria program.</div></div></div>
+          <div class="ss"><div class="s-bull">🎉</div><div class="sc"><span class="sd" contenteditable="false">5 Desember 2025</span><div class="se" contenteditable="false">Pengumuman Peserta Terpilih</div><div class="sn" contenteditable="false">40 peserta terbaik diumumkan secara resmi!</div></div></div>
+          <div class="ss dep"><div class="s-bull">🚀</div><div class="sc"><span class="sd" contenteditable="false">5 Februari 2026</span><div class="se" contenteditable="false">Keberangkatan Batch 1!</div><div class="sn" contenteditable="false">Saatnya berangkat ke Malaysia dan Singapura 🇲🇾🇸🇬</div></div></div>
+        </div>
+      </div>
+      <div class="dbox"><h4>📋 Dokumen yang Perlu Disiapkan</h4><div class="dtags"><span class="dtag">Paspor aktif (min. 6 bulan)</span><span class="dtag">Formulir pendaftaran</span><span class="dtag">Esai motivasi</span><span class="dtag">Bukti prestasi</span><span class="dtag">Foto formal</span><span class="dtag">Surat izin orang tua/instansi</span></div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       FAQ
+  ══════════════════════════ -->
+  <div class="panel" id="panel-faq">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">FAQ</div><span class="back-path">Beranda → FAQ</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">❓ FAQ</div><div class="ptitle" contenteditable="false">Pertanyaan yang Sering Ditanyakan</div><p class="plead" contenteditable="false">Klik pertanyaan untuk melihat jawabannya. Masih ada yang ingin ditanyakan? Hubungi admin kami.</p></div>
+      <div class="flist">
+        <div class="fi"><div class="fq" onclick="toggleFaq(this.parentElement)"><span class="fq-t" contenteditable="false">Apakah program ini berbayar?</span><span class="ftog">+</span></div><div class="fa" contenteditable="false">Program ini memiliki 3 jalur: <strong>Fully Funded</strong> (100% ditanggung penyelenggara), <strong>Partial Funded</strong> (diskon hingga 50%), dan <strong>Self Funded</strong> (biaya penuh peserta). Semua jalur mendapatkan fasilitas dan hak program yang sama.</div></div>
+        <div class="fi"><div class="fq" onclick="toggleFaq(this.parentElement)"><span class="fq-t" contenteditable="false">Apakah saya harus memiliki paspor?</span><span class="ftog">+</span></div><div class="fa" contenteditable="false">Ya, paspor adalah dokumen wajib. Pastikan paspor <strong>aktif minimal 6 bulan</strong> dari tanggal keberangkatan (5 Februari 2026).</div></div>
+        <div class="fi"><div class="fq" onclick="toggleFaq(this.parentElement)"><span class="fq-t" contenteditable="false">Apakah program aman untuk peserta remaja dan siswa?</span><span class="ftog">+</span></div><div class="fa" contenteditable="false">Sangat aman! Program ini didampingi oleh <strong>panitia lokal selama program</strong> dari keberangkatan sampai kepulangan ke Indonesia.</div></div>
+        <div class="fi"><div class="fq" onclick="toggleFaq(this.parentElement)"><span class="fq-t" contenteditable="false">Apakah program ini cocok untuk mahasiswa?</span><span class="ftog">+</span></div><div class="fa" contenteditable="false">Sangat cocok! Mahasiswa bisa mendapatkan <strong>pengalaman lintas kampus internasional</strong>, memperluas jaringan global, dan berpeluang menjadi relawan batch berikutnya.</div></div>
+        <div class="fi"><div class="fq" onclick="toggleFaq(this.parentElement)"><span class="fq-t" contenteditable="false">Saya sudah lulus kuliah, apakah masih bisa daftar?</span><span class="ftog">+</span></div><div class="fa" contenteditable="false">Boleh banget! Karena tidak menutup kemungkinan membuka pandangan untuk lanjut studi serta menjalin kolaborasi di dunia kerja. Program terbuka untuk WNI usia <strong>15–30 tahun</strong>.</div></div>
+        <div class="fi"><div class="fq" onclick="toggleFaq(this.parentElement)"><span class="fq-t" contenteditable="false">Apakah kemampuan bahasa Inggris wajib?</span><span class="ftog">+</span></div><div class="fa" contenteditable="false">Dengan kemampuan dasar bahasa Inggris dianjurkan untuk mempermudah komunikasi. Namun, tidak perlu khawatir karena ada <strong>pendamping sebagai fasilitator</strong>.</div></div>
+        <div class="fi"><div class="fq" onclick="toggleFaq(this.parentElement)"><span class="fq-t" contenteditable="false">Berapa kuota peserta yang diterima?</span><span class="ftog">+</span></div><div class="fa" contenteditable="false">Hanya <strong>40 peserta terpilih</strong> per batch. Seleksi meliputi administrasi, test esai, dan wawancara (untuk Fully/Partial Funded).</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       KONTAK
+  ══════════════════════════ -->
+  <div class="panel" id="panel-contact">
+    <div class="back-bar" onclick="goPanel('home')"><div class="back-ico">←</div><div class="back-ttl">Kontak & Daftar</div><span class="back-path">Beranda → Kontak</span></div>
+    <div class="pi">
+      <div class="ph"><div class="ptag">📬 Kontak</div><div class="ptitle" contenteditable="false">Hubungi Kami</div><p class="plead" contenteditable="false">Tim GlobaLearn Journey siap membantu pertanyaan seputar program, pendaftaran, dan persiapan keberangkatan.</p></div>
+      <div class="cgrid">
+        <div class="clinks">
+          <a href="https://wa.me/62881082996659" target="_blank" class="clink"><div class="cl-ic">📱</div><div><span class="cl-lbl">WhatsApp / Telepon</span><span class="cl-val" contenteditable="false">+62 881 0829 96659</span></div></a>
+          <a href="/cdn-cgi/l/email-protection#43302a2d2631242a242f2c21222f26273603242e222a2f6d202c2e" class="clink"><div class="cl-ic">✉️</div><div><span class="cl-lbl">Email</span><span class="cl-val" contenteditable="false"><span class="__cf_email__" data-cfemail="85f6ecebe0f7e2ece2e9eae7e4e9e0e1f0c5e2e8e4ece9abe6eae8">[email&#160;protected]</span></span></div></a>
+          <a href="https://instagram.com/globalearnjourney" target="_blank" class="clink"><div class="cl-ic">📸</div><div><span class="cl-lbl">Instagram</span><span class="cl-val" contenteditable="false">@globalearnjourney</span></div></a>
+          <div class="clink"><div class="cl-ic">👤</div><div><span class="cl-lbl">Executive Director</span><span class="cl-val" contenteditable="false">Rama</span></div></div>
+        </div>
+        <div class="cta-box">
+          <h3 contenteditable="false">Sat Set, Langsung Daftar! 🚀</h3>
+          <p contenteditable="false">Mau jadi Generasi Muda penerus bangsa yang potensial? Bersama program ini, yuk kita wujudkan bersama!</p>
+          <div class="cta-ms">
+            <div class="cta-m">📅 Buka hingga: <strong contenteditable="false">15 November 2025</strong></div>
+            <div class="cta-m">👥 Kuota: <strong contenteditable="false">Hanya 40 peserta terbaik</strong></div>
+            <div class="cta-m">🌍 Tujuan: <strong contenteditable="false">Malaysia & Singapura</strong></div>
+            <div class="cta-m">✈️ Berangkat: <strong contenteditable="false">5–8 Februari 2026</strong></div>
+          </div>
+          <a href="https://bit.ly/DaftarGlobaLearn" target="_blank" class="cta-btn" contenteditable="false">🚀 Daftar di bit.ly/DaftarGlobaLearn</a>
+        </div>
+      </div>
+      <div class="qbox">
+        <div class="qbox-txt" contenteditable="false">Mereka yang berani menjelajah dunia hari ini, adalah mereka yang siap memimpin dunia esok hari.</div>
+      </div>
+      <div style="margin-top:14px;text-align:center">
+        <button onclick="openLogin()" style="background:none;border:none;font-size:.62rem;color:var(--txt3);cursor:pointer;text-decoration:underline;text-underline-offset:3px;opacity:.4;transition:.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.4'">🔐 Admin Login</button>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- /content -->
+</div><!-- /layout -->
+
+<div id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── NAVIGATION ──
+function goPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+  const navEl = document.querySelector(`.nav-item[onclick="goPanel('${id}')"]`);
+  if (navEl) navEl.classList.add('active');
+  document.getElementById('content').scrollTop = 0;
+  // Tutup sidebar overlay di mobile
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+// ── SIDEBAR ──
+let sbOpen = false;
+function toggleSidebar() {
+  sbOpen = !sbOpen;
+  document.getElementById('sidebar').classList.toggle('open', sbOpen);
+  // Mobile: tampilkan/sembunyikan backdrop
+  const bd = document.getElementById('sbBackdrop');
+  if (window.innerWidth <= 768) {
+    bd.style.display = sbOpen ? 'block' : 'none';
+  } else {
+    bd.style.display = 'none';
+  }
+}
+function closeSidebar() {
+  sbOpen = false;
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sbBackdrop').style.display = 'none';
+}
+
+// ── FAQ ──
+function toggleFaq(el) {
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.fi').forEach(f => f.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
+// ── ADMIN AUTH ──
+const ADMIN_CREDS = { user: 'globalearn', pass: 'admin2026' };
+let isAdmin = false;
+let editMode = false;
+
+function openLogin() {
+  document.getElementById('loginModal').classList.add('show');
+  setTimeout(() => document.getElementById('loginUser').focus(), 100);
+}
+function closeLogin() {
+  document.getElementById('loginModal').classList.remove('show');
+  document.getElementById('loginErr').classList.remove('show');
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginPass').value = '';
+  document.getElementById('loginUser').classList.remove('err');
+  document.getElementById('loginPass').classList.remove('err');
+}
+function doLogin() {
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value;
+  const err = document.getElementById('loginErr');
+  if (u === ADMIN_CREDS.user && p === ADMIN_CREDS.pass) {
+    isAdmin = true;
+    closeLogin();
+    activateAdmin();
+    toast('🎉 Selamat datang, Admin!');
+  } else {
+    err.classList.add('show');
+    document.getElementById('loginUser').classList.add('err');
+    document.getElementById('loginPass').classList.add('err');
+    document.getElementById('loginPass').value = '';
+    setTimeout(() => {
+      err.classList.remove('show');
+      document.getElementById('loginUser').classList.remove('err');
+      document.getElementById('loginPass').classList.remove('err');
+    }, 3000);
+  }
+}
+function adminLogout() {
+  isAdmin = false;
+  if (editMode) toggleEdit();
+  document.getElementById('adminBar').classList.remove('show');
+  document.getElementById('adminBadge').classList.remove('show');
+  document.getElementById('editBtn').style.display = 'none';
+  document.getElementById('collageUploadBtn').style.display = 'none';
+  const note = document.getElementById('collageAdminNote');
+  if (note) note.style.display = 'none';
+  document.body.classList.remove('admin-mode');
+  document.querySelector('.brand-mark').onclick = null;
+  toast('👋 Kamu telah keluar dari mode admin.');
+}
+
+// ── PHOTO COLLAGE ──
+let currentCollageSlot = null;
+const photoSrcs = [null, null, null, null, null]; // shared state
+
+function triggerPhotoUpload(slot) {
+  if (!isAdmin) return;
+  currentCollageSlot = slot;
+  document.getElementById('collageInput').click();
+}
+
+document.getElementById('collageInput').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file || currentCollageSlot === null) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const src = ev.target.result;
+    photoSrcs[currentCollageSlot] = src;
+    applyPhotoToSlot(currentCollageSlot, src);
+    toast('🖼️ Foto ' + (currentCollageSlot + 1) + ' berhasil diupload!');
+    this.value = '';
+  };
+  reader.readAsDataURL(file);
+});
+
+function applyPhotoToSlot(idx, src) {
+  // Update beranda collage-track slot
+  const img = document.getElementById('cimg-' + idx);
+  if (img) { img.src = src; img.style.display = 'block'; }
+  const slot = document.querySelector('#collageTrack .collage-slot[data-slot="' + idx + '"]');
+  if (slot) { const em = slot.querySelector('.collage-empty'); if(em) em.style.display='none'; }
+  // Update panel-collage full-grid slot
+  const cfslot = document.querySelector('#collageFullGrid .cfg-slot[data-slot="' + idx + '"]');
+  if (cfslot) {
+    const cfi = cfslot.querySelector('.cfg-img');
+    if(cfi) { cfi.src = src; cfi.style.display = 'block'; }
+    const em = cfslot.querySelector('.collage-empty'); if(em) em.style.display='none';
+  }
+}
+
+// Collage scroll + dots sync (beranda)
+const track = document.getElementById('collageTrack');
+if (track) {
+  track.addEventListener('scroll', function() {
+    const dots = document.querySelectorAll('.cdot');
+    const slotW = track.querySelector('.collage-slot').offsetWidth;
+    const idx = Math.round(track.scrollLeft / slotW);
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  });
+}
+
+function scrollCollage(idx) {
+  const t = document.getElementById('collageTrack');
+  const slotW = t.querySelector('.collage-slot').offsetWidth;
+  t.scrollTo({ left: idx * slotW, behavior: 'smooth' });
+}
+
+// Auto-scroll galeri tiap 3 detik
+let collageAutoIdx = 0;
+let collageAutoTimer = null;
+function startCollageAuto() {
+  stopCollageAuto();
+  collageAutoTimer = setInterval(() => {
+    const t = document.getElementById('collageTrack');
+    const slots = t.querySelectorAll('.collage-slot');
+    collageAutoIdx = (collageAutoIdx + 1) % slots.length;
+    scrollCollage(collageAutoIdx);
+  }, 3000);
+}
+function stopCollageAuto() {
+  if (collageAutoTimer) { clearInterval(collageAutoTimer); collageAutoTimer = null; }
+}
+// Pause saat user scroll manual, lanjut 5 detik kemudian
+document.addEventListener('DOMContentLoaded', () => {
+  const t = document.getElementById('collageTrack');
+  if (t) {
+    t.addEventListener('touchstart', () => { stopCollageAuto(); }, { passive: true });
+    t.addEventListener('mousedown', () => { stopCollageAuto(); });
+    t.addEventListener('touchend', () => { setTimeout(startCollageAuto, 5000); });
+    t.addEventListener('mouseup', () => { setTimeout(startCollageAuto, 5000); });
+  }
+  startCollageAuto();
+});
+
+// ── LOGO UPLOAD (auto-size) ──
+document.getElementById('logoInput').addEventListener('change', function(e) {
+  if (!isAdmin) return;
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = document.getElementById('logoImg');
+    // load to get natural dimensions
+    const tmp = new Image();
+    tmp.onload = function() {
+      const ratio = tmp.naturalWidth / tmp.naturalHeight;
+      const h = 34;
+      const w = Math.min(Math.round(h * ratio), 120);
+      img.style.height = h + 'px';
+      img.style.width = w + 'px';
+      img.style.maxWidth = 'none';
+      img.src = ev.target.result;
+      img.style.display = 'block';
+      document.getElementById('logoEmoji').style.display = 'none';
+      const mark = document.querySelector('.brand-mark');
+      mark.style.width = 'auto';
+      mark.style.minWidth = w + 'px';
+      toast('✅ Logo berhasil diupload!');
+    };
+    tmp.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+// Show/hide collage upload hint in admin mode
+function activateAdmin() {
+  document.getElementById('adminBar').classList.add('show');
+  document.getElementById('adminBadge').classList.add('show');
+  document.getElementById('editBtn').style.display = 'block';
+  document.body.classList.add('admin-mode');
+  // Tampilkan collage admin note
+  const note = document.getElementById('collageAdminNote');
+  if (note) note.style.display = 'block';
+  document.getElementById('collageUploadBtn').style.display = 'block';
+  document.querySelector('.brand-mark').onclick = () => document.getElementById('logoInput').click();
+}
+
+// ── EDIT MODE (admin only) ──
+function toggleEdit() {
+  if (!isAdmin) return;
+  editMode = !editMode;
+  const btn = document.getElementById('editBtn');
+  const barBtn = document.getElementById('editBtnBar');
+  document.body.classList.toggle('edit-mode', editMode);
+  btn.classList.toggle('on', editMode);
+  btn.textContent = editMode ? '✅ Selesai' : '✏️ Edit';
+  barBtn.classList.toggle('on', editMode);
+  barBtn.textContent = editMode ? '✅ Selesai Edit' : '✏️ Edit Konten';
+  document.querySelectorAll('[contenteditable]').forEach(el => {
+    el.contentEditable = editMode ? 'true' : 'false';
+  });
+  toast(editMode ? '✏️ Klik teks manapun untuk mengedit' : '💾 Perubahan tersimpan!');
+}
+
+// ── KONAMI / SECRET: klik logo 5x untuk buka login ──
+let logoClicks = 0;
+let logoTimer;
+document.querySelector('.brand-mark').addEventListener('click', function() {
+  if (isAdmin) return;
+  logoClicks++;
+  clearTimeout(logoTimer);
+  logoTimer = setTimeout(() => logoClicks = 0, 2000);
+  if (logoClicks >= 5) {
+    logoClicks = 0;
+    openLogin();
+  }
+});
+
+// ── TOAST ──
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── INIT ──
+goPanel('home');
+</script>
+</body>
+</html>
+
